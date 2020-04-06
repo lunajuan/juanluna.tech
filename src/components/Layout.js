@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import useSiteMetadata from '../hooks/useSiteMetadata';
 
 const theme = {
   text: {
@@ -102,13 +104,21 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const Layout = ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <GlobalStyles />
-    <header />
-    <main>{children}</main>
-  </ThemeProvider>
-);
+const Layout = ({ children }) => {
+  const { title, description } = useSiteMetadata();
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Helmet>
+        <html lang="en" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+      </Helmet>
+      <header />
+      <main>{children}</main>
+    </ThemeProvider>
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
