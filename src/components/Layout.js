@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import useSiteMetadata from '../hooks/useSiteMetadata';
+import 'typeface-poppins';
+import 'typeface-open-sans';
 
 const theme = {
   text: {
@@ -13,6 +15,8 @@ const theme = {
     sans:
       '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
     serif: 'Georgia, Cambria, "Times New Roman", Times, serif',
+    openSans: 'Open Sans',
+    poppins: 'Poppins',
   },
   fontSize: {
     xs: '1.2rem',
@@ -62,7 +66,7 @@ const theme = {
 const GlobalStyles = createGlobalStyle`
   html {
     font-size: 10px;
-    font-family: ${props => props.theme.fontFamily.sans};
+    font-family: ${props => props.theme.fontFamily.openSans};
     color: ${props => props.theme.text.primary};
   }
 
@@ -92,6 +96,7 @@ const GlobalStyles = createGlobalStyle`
   h3,
   h4,
   h6 {
+    font-family: ${props => props.theme.fontFamily.poppins};
     line-height: ${props => props.theme.lineHeight.tight};
 
     + * {
