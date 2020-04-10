@@ -11,6 +11,8 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-styled-components',
       options: {},
@@ -21,6 +23,23 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/components/Layout.js'),
         },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              disableBgImageOnAlpha: true,
+              withWebp: true,
+            },
+          },
+        ],
+        plugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              backgroundColor: 'none',
+            },
+          },
+        ],
       },
     },
     {
