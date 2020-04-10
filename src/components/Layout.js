@@ -83,7 +83,12 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
 
     font-size: ${props => props.theme.fontSize.base};
-    line-height: ${props => props.theme.lineHeight.normal};
+    line-height: ${props => props.theme.lineHeight.relaxed};
+
+    @media (min-width: 768px) {
+      font-size: ${props => props.theme.fontSize.lg};
+      line-height: ${props => props.theme.lineHeight.normal};
+    }
 
     /* remove margin for main div that gatsby mounts into */
     > div {
