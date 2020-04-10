@@ -61,6 +61,12 @@ const theme = {
     '56': '22.4rem',
     '64': '25.6rem',
   },
+  screen: {
+    sm: '640px',
+    md: '768px',
+    lg: '1024px',
+    xl: '1280px',
+  },
   pageMaxWidth: {
     outer: '150rem',
     inner: '120rem',
@@ -122,7 +128,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0 ${props => props.theme.pageGutter};
     margin: 0 auto;
 
-    @media (min-width: 768px) {
+    @media (min-width: ${props => props.theme.screen.md}) {
       padding: 0 ${props => props.theme.pageGutter};
     }
 
