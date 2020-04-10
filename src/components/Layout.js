@@ -3,16 +3,23 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import useSiteMetadata from '../hooks/useSiteMetadata';
+import 'typeface-poppins';
+import 'typeface-open-sans';
 
 const theme = {
   text: {
     primary: '#1A202C',
     secondary: '#718096',
   },
+  background: {
+    light: '#EDF2F7',
+  },
   fontFamily: {
     sans:
       '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
     serif: 'Georgia, Cambria, "Times New Roman", Times, serif',
+    openSans: 'Open Sans',
+    poppins: 'Poppins',
   },
   fontSize: {
     xs: '1.2rem',
@@ -57,12 +64,30 @@ const theme = {
     '56': '22.4rem',
     '64': '25.6rem',
   },
+  borderRadius: {
+    sm: '0.2rem',
+    default: '0.4rem',
+    md: '0.6rem',
+    lg: '0.8rem',
+    full: '9999px',
+  },
+  screen: {
+    sm: '640px',
+    md: '768px',
+    lg: '1024px',
+    xl: '1280px',
+  },
+  pageMaxWidth: {
+    outer: '150rem',
+    inner: '120rem',
+  },
+  pageGutter: '4vw',
 };
 
 const GlobalStyles = createGlobalStyle`
   html {
     font-size: 10px;
-    font-family: ${props => props.theme.fontFamily.sans};
+    font-family: ${props => props.theme.fontFamily.openSans};
     color: ${props => props.theme.text.primary};
   }
 
@@ -79,7 +104,12 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
 
     font-size: ${props => props.theme.fontSize.base};
-    line-height: ${props => props.theme.lineHeight.normal};
+    line-height: ${props => props.theme.lineHeight.relaxed};
+
+    @media (min-width: 768px) {
+      font-size: ${props => props.theme.fontSize.lg};
+      line-height: ${props => props.theme.lineHeight.normal};
+    }
 
     /* remove margin for main div that gatsby mounts into */
     > div {
@@ -92,6 +122,7 @@ const GlobalStyles = createGlobalStyle`
   h3,
   h4,
   h6 {
+    font-family: ${props => props.theme.fontFamily.poppins};
     line-height: ${props => props.theme.lineHeight.tight};
 
     + * {
@@ -101,6 +132,17 @@ const GlobalStyles = createGlobalStyle`
 
   li {
     margin-top: ${props => props.theme.spacing['1']};
+  }
+
+  main {
+    padding: 0 ${props => props.theme.pageGutter};
+    margin: 0 auto;
+
+    @media (min-width: ${props => props.theme.screen.md}) {
+      padding: 0 ${props => props.theme.pageGutter};
+    }
+
+    max-width: ${props => props.theme.pageMaxWidth.outer};
   }
 `;
 
