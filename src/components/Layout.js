@@ -61,6 +61,11 @@ const theme = {
     '56': '22.4rem',
     '64': '25.6rem',
   },
+  pageMaxWidth: {
+    outer: '150rem',
+    inner: '120rem',
+  },
+  pageGutter: '4vw',
 };
 
 const GlobalStyles = createGlobalStyle`
