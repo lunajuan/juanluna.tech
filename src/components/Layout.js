@@ -117,6 +117,17 @@ const GlobalStyles = createGlobalStyle`
   li {
     margin-top: ${props => props.theme.spacing['1']};
   }
+
+  main {
+    padding: 0 ${props => props.theme.pageGutter};
+    margin: 0 auto;
+
+    @media (min-width: 768px) {
+      padding: 0 ${props => props.theme.pageGutter};
+    }
+
+    max-width: ${props => props.theme.pageMaxWidth.outer};
+  }
 `;
 
 const Layout = ({ children }) => {
