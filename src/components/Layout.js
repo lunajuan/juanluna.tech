@@ -61,6 +61,13 @@ const theme = {
     '56': '22.4rem',
     '64': '25.6rem',
   },
+  borderRadius: {
+    sm: '0.2rem',
+    default: '0.4rem',
+    md: '0.6rem',
+    lg: '0.8rem',
+    full: '9999px',
+  },
   screen: {
     sm: '640px',
     md: '768px',
