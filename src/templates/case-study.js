@@ -17,12 +17,6 @@ const Header = styled.header`
 
 const Body = styled.div`
   section {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
-    grid-row-gap: ${props => props.theme.spacing['5']};
-    grid-column-gap: ${props => props.theme.spacing['12']};
-    align-items: start;
-
     /* we have to fight off the gutter created by the padding on main since we
     want to have the background color extend 100vw */
     margin: 0 -${props => props.theme.pageGutter};
@@ -76,6 +70,14 @@ const Body = styled.div`
   .reverse-order {
     display: flex;
     flex-direction: column-reverse;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
+    grid-row-gap: ${props => props.theme.spacing['5']};
+    grid-column-gap: ${props => props.theme.spacing['12']};
+    align-items: start;
   }
 
   .grid-item {
