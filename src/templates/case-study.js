@@ -95,7 +95,7 @@ export const query = graphql`
   }
 `;
 
-const ProjectTemplate = ({ data: { mdx: project } }) => {
+const CaseStudyTemplate = ({ data: { mdx: project } }) => {
   return (
     <Layout>
       <Header>
@@ -108,4 +108,4 @@ const ProjectTemplate = ({ data: { mdx: project } }) => {
   );
 };
 
-export default ProjectTemplate;
+export default CaseStudyTemplate;
