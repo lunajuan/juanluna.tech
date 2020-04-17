@@ -44,7 +44,7 @@ const Body = styled.div`
     font-size: ${props => props.theme.fontSize['2xl']};
 
     @media (min-width: ${props => props.theme.screen.md}) {
-      font-size: ${props => props.theme.fontSize['3xl']};
+      font-size: ${props => props.theme.fontSize['4xl']};
     }
   }
 
