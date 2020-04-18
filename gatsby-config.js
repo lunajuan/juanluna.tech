@@ -30,7 +30,7 @@ module.exports = {
             options: {
               disableBgImageOnAlpha: true,
               withWebp: true,
-              maxWidth: 1000,
+              maxWidth: 500,
               quality: 80,
               wrapperStyle: `
                 width: 100%;
