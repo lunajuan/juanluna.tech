@@ -58,7 +58,7 @@ const Body = styled.div`
 
   p {
     max-width: 35em;
-    margin: 0 0 ${props => props.theme.spacing['10']};
+    margin: 0 auto ${props => props.theme.spacing['10']};
     font-size: ${props => props.theme.fontSize.base};
     line-height: ${props => props.theme.lineHeight.relaxed};
   }
@@ -84,6 +84,9 @@ const Body = styled.div`
 
   .grid-item {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
