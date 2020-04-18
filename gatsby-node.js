@@ -23,7 +23,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   projects.forEach(project => {
     actions.createPage({
       path: project.frontmatter.slug,
-      component: require.resolve('./src/templates/CaseStudyTemplate.js'),
+      component: require.resolve('./src/templates/case-study.js'),
       context: {
         slug: project.frontmatter.slug,
       },

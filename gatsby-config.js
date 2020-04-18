@@ -24,11 +24,18 @@ module.exports = {
           default: require.resolve('./src/components/Layout.js'),
         },
         gatsbyRemarkPlugins: [
+          'gatsby-remark-unwrap-images',
           {
             resolve: 'gatsby-remark-images',
             options: {
               disableBgImageOnAlpha: true,
               withWebp: true,
+              maxWidth: 550,
+              linkImagesToOriginal: false,
+              quality: 85,
+              wrapperStyle: `
+                width: 100%;
+              `,
             },
           },
         ],
@@ -45,8 +52,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'projects',
-        path: 'projects',
+        name: 'content',
+        path: 'content',
       },
     },
   ],
