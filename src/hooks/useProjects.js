@@ -9,6 +9,13 @@ const useProjects = () => {
             title
             slug
             url
+            coverImage {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
           excerpt
         }
@@ -18,11 +25,11 @@ const useProjects = () => {
 
   return data.allMdx.nodes.map(project => {
     const {
-      frontmatter: { title, slug, url },
+      frontmatter: { title, slug, url, coverImage },
       excerpt,
     } = project;
 
-    return { title, slug, url, excerpt };
+    return { title, slug, url, excerpt, coverImage };
   });
 };
 

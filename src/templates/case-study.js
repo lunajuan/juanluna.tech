@@ -2,15 +2,52 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
+import Img from 'gatsby-image';
 import Layout from '../components/Layout';
 
 const Header = styled.header`
+  padding: ${props => props.theme.spacing['10']} 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: ${props => props.theme.spacing['4']};
+  justify-items: center;
+
+  @media (min-width: ${props => props.theme.screen.md}) {
+    grid-gap: ${props => props.theme.spacing['6']};
+  }
+
+  @media (min-width: ${props => props.theme.screen.lg}) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: ${props => props.theme.spacing['12']};
+    align-items: center;
+  }
+
   h1 {
+    text-align: center;
     margin: ${props => props.theme.spacing['10']} 0;
-    font-size: ${props => props.theme.fontSize['4xl']};
+    font-size: ${props => props.theme.fontSize['5xl']};
 
     @media (min-width: ${props => props.theme.screen.md}) {
-      font-size: ${props => props.theme.fontSize['5xl']};
+      text-align: left;
+      font-size: ${props => props.theme.fontSize['6xl']};
+    }
+  }
+
+  p {
+    max-width: 35em;
+  }
+
+  .gatsby-image-wrapper {
+    width: 100%;
+    border-radius: ${props => props.theme.borderRadius.default};
+    box-shadow: ${props => props.theme.boxShadow.default};
+
+    @media (min-width: ${props => props.theme.screen.md}) {
+      display: block;
+    }
+
+    img {
+      margin: 0;
     }
   }
 `;
@@ -22,7 +59,7 @@ const Body = styled.div`
     margin: 0 -${props => props.theme.pageGutter};
     padding: ${props => props.theme.spacing['10']} ${props => props.theme.pageGutter};
 
-    @media (min-width: ${props => props.theme.screen.md}) {
+    @media (min-width: ${props => props.theme.screen.lg}) {
       border-radius: ${props => props.theme.borderRadius.default};
       margin: 0;
       padding-left: ${props => props.theme.spacing['16']};
@@ -76,10 +113,13 @@ const Body = styled.div`
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
-    grid-row-gap: ${props => props.theme.spacing['5']};
-    grid-column-gap: ${props => props.theme.spacing['12']};
+    grid-template-columns: 1fr;
+    grid-gap: ${props => props.theme.spacing['12']};
     align-items: start;
+
+    @media (min-width: ${props => props.theme.screen.md}) {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   .grid-item {
@@ -87,6 +127,16 @@ const Body = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    &--screenshot {
+      align-self: center;
+      img,
+      .gatsby-resp-image-wrapper,
+      .gatsby-resp-image-background-image {
+        border-radius: ${props => props.theme.borderRadius.default};
+        box-shadow: ${props => props.theme.boxShadow.default};
+      }
+    }
   }
 `;
 
@@ -96,6 +146,14 @@ export const query = graphql`
     mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         title
+        description
+        coverImage {
+          childImageSharp {
+            fluid(maxWidth: 1600, quality: 80) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
       }
       body
     }
@@ -106,7 +164,19 @@ const CaseStudyTemplate = ({ data: { mdx: project } }) => {
   return (
     <Layout>
       <Header>
-        <h1>{project.frontmatter.title}</h1>
+        <div>
+          <h1>{project.frontmatter.title}</h1>
+          <p>{project.frontmatter.description}</p>
+        </div>
+        {project.frontmatter.coverImage && (
+          <Img
+            fluid={{
+              ...project.frontmatter.coverImage.childImageSharp.fluid,
+              sizes: '(max-width: 1500px) 700w, (min-width: 1024px) 50vw, 100vw',
+            }}
+            imgStyle={{ objectFit: 'contain' }}
+          />
+        )}
       </Header>
       <Body>
         <MDXRenderer>{project.body}</MDXRenderer>
