@@ -150,7 +150,7 @@ export const query = graphql`
         description
         coverImage {
           childImageSharp {
-            fluid(maxWidth: 1600, quality: 80) {
+            fluid(maxWidth: 1000, quality: 80) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
@@ -158,7 +158,7 @@ export const query = graphql`
         gallery {
           id
           childImageSharp {
-            fluid(maxWidth: 300) {
+            fluid(maxWidth: 1000, quality: 80) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
@@ -181,7 +181,7 @@ const CaseStudyTemplate = ({ data: { mdx: project } }) => {
           <Img
             fluid={{
               ...project.frontmatter.coverImage.childImageSharp.fluid,
-              sizes: '(max-width: 1500px) 700w, (min-width: 1024px) 50vw, 100vw',
+              sizes: '(min-width: 1500px) 700w, (min-width: 1024px) 50vw, 100vw',
             }}
             imgStyle={{ objectFit: 'contain' }}
           />
