@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import Gallery from '../components/Gallery';
 import Layout from '../components/Layout';
 
 const Header = styled.header`
@@ -154,6 +155,14 @@ export const query = graphql`
             }
           }
         }
+        gallery {
+          id
+          childImageSharp {
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
       }
       body
     }
@@ -180,6 +189,12 @@ const CaseStudyTemplate = ({ data: { mdx: project } }) => {
       </Header>
       <Body>
         <MDXRenderer>{project.body}</MDXRenderer>
+        {project.frontmatter.gallery.length && (
+          <section id="screenshots">
+            <h2>Screenshots</h2>
+            <Gallery images={project.frontmatter.gallery} />
+          </section>
+        )}
       </Body>
     </Layout>
   );
