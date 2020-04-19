@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import Gallery from '../components/Gallery';
 import Layout from '../components/Layout';
 
 const Header = styled.header`
@@ -148,11 +149,26 @@ export const query = graphql`
         title
         description
         coverImage {
-          childImageSharp {
-            fluid(maxWidth: 1600, quality: 80) {
-              ...GatsbyImageSharpFluid_withWebp
+          image {
+            childImageSharp {
+              fluid(maxWidth: 1000, quality: 80) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
             }
           }
+          alt
+        }
+        gallery {
+          image {
+            id
+            childImageSharp {
+              fluid(maxWidth: 1000, quality: 80) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+          alt
+          caption
         }
       }
       body
@@ -170,9 +186,10 @@ const CaseStudyTemplate = ({ data: { mdx: project } }) => {
         </div>
         {project.frontmatter.coverImage && (
           <Img
+            alt={project.frontmatter.coverImage.alt || null}
             fluid={{
-              ...project.frontmatter.coverImage.childImageSharp.fluid,
-              sizes: '(max-width: 1500px) 700w, (min-width: 1024px) 50vw, 100vw',
+              ...project.frontmatter.coverImage.image.childImageSharp.fluid,
+              sizes: '(min-width: 1500px) 700w, (min-width: 1024px) 50vw, 100vw',
             }}
             imgStyle={{ objectFit: 'contain' }}
           />
@@ -180,6 +197,12 @@ const CaseStudyTemplate = ({ data: { mdx: project } }) => {
       </Header>
       <Body>
         <MDXRenderer>{project.body}</MDXRenderer>
+        {project.frontmatter.gallery.length && (
+          <section id="screenshots">
+            <h2>Screenshots</h2>
+            <Gallery images={project.frontmatter.gallery} />
+          </section>
+        )}
       </Body>
     </Layout>
   );

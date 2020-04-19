@@ -10,11 +10,14 @@ const useProjects = () => {
             slug
             url
             coverImage {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
+              image {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
+              alt
             }
           }
           excerpt
