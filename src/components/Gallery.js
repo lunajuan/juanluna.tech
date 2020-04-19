@@ -25,6 +25,10 @@ const Item = styled.div`
   picture {
     margin: 0;
   }
+
+  .gatsby-image-wrapper {
+    border-radius: ${props => props.theme.borderRadius.default};
+  }
 `;
 
 const Gallery = ({ images = [] }) => {
