@@ -42,10 +42,11 @@ const Gallery = ({ images = [] }) => {
         <Item key={image.id}>
           <Img
             fluid={{
-              ...image.childImageSharp.fluid,
+              ...image.image.childImageSharp.fluid,
               sizes: `(min-width: ${theme.pageMaxWidth.outer}) 770px, (min-width: ${theme.screen.xl}) 33vw, (min-width: ${theme.screen.sm}) 50vw, 100vw`,
             }}
             style={{ display: 'block', width: '100%' }}
+            alt={image.alt || null}
           />
         </Item>
       ))}

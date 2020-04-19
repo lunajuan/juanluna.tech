@@ -149,19 +149,26 @@ export const query = graphql`
         title
         description
         coverImage {
-          childImageSharp {
-            fluid(maxWidth: 1000, quality: 80) {
-              ...GatsbyImageSharpFluid_withWebp
+          image {
+            childImageSharp {
+              fluid(maxWidth: 1000, quality: 80) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
             }
           }
+          alt
         }
         gallery {
-          id
-          childImageSharp {
-            fluid(maxWidth: 1000, quality: 80) {
-              ...GatsbyImageSharpFluid_withWebp
+          image {
+            id
+            childImageSharp {
+              fluid(maxWidth: 1000, quality: 80) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
             }
           }
+          alt
+          caption
         }
       }
       body
@@ -179,8 +186,9 @@ const CaseStudyTemplate = ({ data: { mdx: project } }) => {
         </div>
         {project.frontmatter.coverImage && (
           <Img
+            alt={project.frontmatter.coverImage.alt || null}
             fluid={{
-              ...project.frontmatter.coverImage.childImageSharp.fluid,
+              ...project.frontmatter.coverImage.image.childImageSharp.fluid,
               sizes: '(min-width: 1500px) 700w, (min-width: 1024px) 50vw, 100vw',
             }}
             imgStyle={{ objectFit: 'contain' }}
