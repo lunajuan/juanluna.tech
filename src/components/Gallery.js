@@ -27,7 +27,7 @@ const Item = styled.div`
   }
 
   .gatsby-image-wrapper {
-    border-radius: ${props => props.theme.borderRadius.default};
+    border-radius: ${props => props.theme.borderRadius.lg};
   }
 `;
 
