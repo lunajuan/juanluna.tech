@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
@@ -15,12 +15,30 @@ const Card = styled.div`
   margin: 0;
 `;
 
-export default () => {
+const ProfileImage = styled(Img)`
+  border-radius: ${props => props.theme.borderRadius.full};
+  margin-left: auto;
+  margin-right: auto;
+
+  img {
+    margin: 0;
+  }
+`;
+
+export default ({ data: { profileImage } }) => {
   const projects = useProjects();
 
   return (
     <Layout>
-      <div>Hello world!</div>
+      <section>
+        <h1>Hi, I'm Juan Luna Ramirez</h1>
+        <ProfileImage
+          fixed={profileImage.childImageSharp.fixed}
+          alt="Juan's profile image"
+          style={{ display: 'block' }}
+        />
+      </section>
+
       <Grid>
         {projects.map(project => (
           <Card>
@@ -66,3 +84,15 @@ export default () => {
     </Layout>
   );
 };
+
+export const query = graphql`
+  query {
+    profileImage: file(relativePath: { eq: "images/photo.jpg" }) {
+      childImageSharp {
+        fixed(width: 300, quality: 90) {
+          ...GatsbyImageSharpFixed_withWebp
+        }
+      }
+    }
+  }
+`;

@@ -56,5 +56,12 @@ module.exports = {
         path: 'content',
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'src',
+        path: 'src',
+      },
+    },
   ],
 };
