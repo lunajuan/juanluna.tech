@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
+import Img from '../components/image';
 import Gallery from '../components/Gallery';
 import Layout from '../components/Layout';
 import Hero from '../styles/hero';
@@ -140,6 +140,8 @@ const CaseStudyTemplate = ({ data: { mdx: project } }) => {
         </div>
         {project.frontmatter.coverImage && (
           <Img
+            rounded
+            shadow
             alt={project.frontmatter.coverImage.alt || null}
             fluid={{
               ...project.frontmatter.coverImage.image.childImageSharp.fluid,

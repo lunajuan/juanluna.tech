@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-import Img from 'gatsby-image';
 import styled from 'styled-components';
+import Img from '../components/image';
 import Layout from '../components/Layout';
 import useProjects from '../hooks/useProjects';
 import Hero from '../styles/hero';
@@ -17,17 +17,10 @@ const Card = styled.div`
 `;
 
 const ProfileImage = styled(Img)`
-  border-radius: ${props => props.theme.borderRadius.full};
-  margin-left: auto;
-  margin-right: auto;
   max-width: 200px;
 
   @media (min-width: ${props => props.theme.screen.lg}) {
     max-width: 300px;
-  }
-
-  img {
-    margin: 0;
   }
 `;
 
@@ -40,12 +33,13 @@ export default ({ data: { profileImage } }) => {
     <Layout>
       <Hero halfSplitLayout>
         <ProfileImage
+          circle
           fluid={{
             ...profileImage.childImageSharp.fluid,
             sizes: '(min-width: 1024px) 300px,200px',
           }}
           alt="Juan's profile image"
-          style={{ display: 'block' }}
+          style={{ display: 'block', margin: '0 auto' }}
         />
         <HeroTextWrapper>
           <h1>Juan Luna Ramirez</h1>
@@ -58,6 +52,7 @@ export default ({ data: { profileImage } }) => {
           <Card>
             {project.coverImage && (
               <Img
+                rounded
                 fluid={project.coverImage.image.childImageSharp.fluid}
                 alt={project.coverImage.alt}
               />
