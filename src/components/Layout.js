@@ -6,6 +6,7 @@ import useSiteMetadata from '../hooks/useSiteMetadata';
 import 'typeface-poppins';
 import 'typeface-open-sans';
 import Header from './header';
+import Footer from './footer';
 
 const theme = {
   text: {
@@ -170,6 +171,7 @@ const Layout = ({ children }) => {
       </Helmet>
       <Header siteTitle={title} />
       <main>{children}</main>
+      <Footer />
     </ThemeProvider>
   );
 };
