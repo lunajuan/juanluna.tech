@@ -5,6 +5,8 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import useSiteMetadata from '../hooks/useSiteMetadata';
 import 'typeface-poppins';
 import 'typeface-open-sans';
+import Header from './header';
+import Footer from './footer';
 
 const theme = {
   text: {
@@ -167,8 +169,9 @@ const Layout = ({ children }) => {
         <title>{title}</title>
         <meta name="description" content={description} />
       </Helmet>
-      <header />
+      <Header siteTitle={title} />
       <main>{children}</main>
+      <Footer />
     </ThemeProvider>
   );
 };

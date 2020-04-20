@@ -8,6 +8,9 @@ module.exports = {
   siteMetadata: {
     title: 'Juan Luna Ramirez',
     description: `Juan is a JavaScript developer based in Los Angeles, California. Come check out what he's been working on lately.`,
+    github: 'https://github.com/lunajuan',
+    twitter: 'https://twitter.com/JuanLunaRamirez',
+    instagram: 'https://www.instagram.com/luna_ramirez/',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -54,6 +57,13 @@ module.exports = {
       options: {
         name: 'content',
         path: 'content',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'src',
+        path: 'src',
       },
     },
   ],

@@ -3,12 +3,16 @@ import { graphql, useStaticQuery } from 'gatsby';
 const useProjects = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMdx {
+      allMdx(sort: { fields: [frontmatter___order], order: [ASC] }) {
         nodes {
+          id
           frontmatter {
             title
+            description
             slug
             url
+            github
+            codesandbox
             coverImage {
               image {
                 childImageSharp {
@@ -20,7 +24,6 @@ const useProjects = () => {
               alt
             }
           }
-          excerpt
         }
       }
     }
@@ -28,11 +31,11 @@ const useProjects = () => {
 
   return data.allMdx.nodes.map(project => {
     const {
-      frontmatter: { title, slug, url, coverImage },
-      excerpt,
+      id,
+      frontmatter: { title, description, slug, url, github, codesandbox, coverImage },
     } = project;
 
-    return { title, slug, url, excerpt, coverImage };
+    return { id, title, description, slug, url, github, codesandbox, coverImage };
   });
 };
 
