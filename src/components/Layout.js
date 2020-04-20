@@ -148,7 +148,6 @@ const GlobalStyles = createGlobalStyle`
   }
 
   main {
-    padding: 0 ${props => props.theme.pageGutter};
     margin: 0 auto;
 
     max-width: ${props => props.theme.pageMaxWidth.outer};

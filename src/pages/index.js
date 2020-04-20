@@ -4,6 +4,7 @@ import Img from 'gatsby-image';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import useProjects from '../hooks/useProjects';
+import { containerStyle } from '../styles/container';
 
 const Grid = styled.div`
   display: grid;
@@ -25,19 +26,23 @@ const ProfileImage = styled(Img)`
   }
 `;
 
+const Hero = styled.section`
+  ${containerStyle};
+`;
+
 export default ({ data: { profileImage } }) => {
   const projects = useProjects();
 
   return (
     <Layout>
-      <section>
+      <Hero>
         <h1>Hi, I'm Juan Luna Ramirez</h1>
         <ProfileImage
           fixed={profileImage.childImageSharp.fixed}
           alt="Juan's profile image"
           style={{ display: 'block' }}
         />
-      </section>
+      </Hero>
 
       <Grid>
         {projects.map(project => (
