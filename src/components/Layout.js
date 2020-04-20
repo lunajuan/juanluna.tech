@@ -151,10 +151,6 @@ const GlobalStyles = createGlobalStyle`
     padding: 0 ${props => props.theme.pageGutter};
     margin: 0 auto;
 
-    @media (min-width: ${props => props.theme.screen.md}) {
-      padding: 0 ${props => props.theme.pageGutter};
-    }
-
     max-width: ${props => props.theme.pageMaxWidth.outer};
   }
 `;
