@@ -4,7 +4,7 @@ import Img from 'gatsby-image';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import useProjects from '../hooks/useProjects';
-import { containerStyle } from '../styles/container';
+import Hero from '../styles/hero';
 
 const Grid = styled.div`
   display: grid;
@@ -20,28 +20,37 @@ const ProfileImage = styled(Img)`
   border-radius: ${props => props.theme.borderRadius.full};
   margin-left: auto;
   margin-right: auto;
+  max-width: 200px;
+
+  @media (min-width: ${props => props.theme.screen.lg}) {
+    max-width: 300px;
+  }
 
   img {
     margin: 0;
   }
 `;
 
-const Hero = styled.section`
-  ${containerStyle};
-`;
+const HeroTextWrapper = styled.div``;
 
 export default ({ data: { profileImage } }) => {
   const projects = useProjects();
 
   return (
     <Layout>
-      <Hero>
-        <h1>Hi, I'm Juan Luna Ramirez</h1>
+      <Hero halfSplitLayout>
         <ProfileImage
-          fixed={profileImage.childImageSharp.fixed}
+          fluid={{
+            ...profileImage.childImageSharp.fluid,
+            sizes: '(min-width: 1024px) 300px,200px',
+          }}
           alt="Juan's profile image"
           style={{ display: 'block' }}
         />
+        <HeroTextWrapper>
+          <h1>Juan Luna Ramirez</h1>
+          <p>Hi, I'm a web developer from Los Angeles, CA</p>
+        </HeroTextWrapper>
       </Hero>
 
       <Grid>
@@ -94,8 +103,8 @@ export const query = graphql`
   query {
     profileImage: file(relativePath: { eq: "images/photo.jpg" }) {
       childImageSharp {
-        fixed(width: 300, quality: 90) {
-          ...GatsbyImageSharpFixed_withWebp
+        fluid(maxWidth: 500, quality: 90) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }

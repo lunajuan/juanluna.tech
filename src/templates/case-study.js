@@ -5,53 +5,7 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 import Gallery from '../components/Gallery';
 import Layout from '../components/Layout';
-
-const Header = styled.header`
-  padding: ${props => props.theme.spacing['10']} 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: ${props => props.theme.spacing['4']};
-  justify-items: center;
-
-  @media (min-width: ${props => props.theme.screen.md}) {
-    grid-gap: ${props => props.theme.spacing['6']};
-  }
-
-  @media (min-width: ${props => props.theme.screen.lg}) {
-    grid-template-columns: 1fr 1fr;
-    grid-gap: ${props => props.theme.spacing['12']};
-    align-items: center;
-  }
-
-  h1 {
-    text-align: center;
-    margin: ${props => props.theme.spacing['10']} 0;
-    font-size: ${props => props.theme.fontSize['5xl']};
-
-    @media (min-width: ${props => props.theme.screen.md}) {
-      text-align: left;
-      font-size: ${props => props.theme.fontSize['6xl']};
-    }
-  }
-
-  p {
-    max-width: 35em;
-  }
-
-  .gatsby-image-wrapper {
-    width: 100%;
-    border-radius: ${props => props.theme.borderRadius.default};
-    box-shadow: ${props => props.theme.boxShadow.default};
-
-    @media (min-width: ${props => props.theme.screen.md}) {
-      display: block;
-    }
-
-    img {
-      margin: 0;
-    }
-  }
-`;
+import Hero from '../styles/hero';
 
 const Body = styled.div`
   section {
@@ -179,7 +133,7 @@ export const query = graphql`
 const CaseStudyTemplate = ({ data: { mdx: project } }) => {
   return (
     <Layout>
-      <Header>
+      <Hero halfSplitLayout={!!project.frontmatter.coverImage}>
         <div>
           <h1>{project.frontmatter.title}</h1>
           <p>{project.frontmatter.description}</p>
@@ -194,7 +148,7 @@ const CaseStudyTemplate = ({ data: { mdx: project } }) => {
             imgStyle={{ objectFit: 'contain' }}
           />
         )}
-      </Header>
+      </Hero>
       <Body>
         <MDXRenderer>{project.body}</MDXRenderer>
         {project.frontmatter.gallery.length && (
