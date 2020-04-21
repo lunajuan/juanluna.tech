@@ -36,10 +36,12 @@ const Hero = styled.section`
   }
 
   h1 {
+    text-align: center;
     margin: ${props => props.theme.spacing['6']} 0;
     font-size: ${props => props.theme.fontSize['5xl']};
 
     @media (min-width: ${props => props.breakpoint}) {
+      text-align: left;
       font-size: ${props => props.theme.fontSize['6xl']};
     }
   }
