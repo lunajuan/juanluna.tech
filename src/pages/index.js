@@ -26,14 +26,12 @@ const ProfileImage = styled(Img)`
   }
 `;
 
-const HeroTextWrapper = styled.div``;
-
 export default ({ data: { profileImage } }) => {
   const projects = useProjects();
 
   return (
     <Layout headerImage={false}>
-      <Hero halfSplitLayout>
+      <Hero halfSplitLayout breakpoint="768px">
         <ProfileImage
           circle
           fluid={{
@@ -43,10 +41,10 @@ export default ({ data: { profileImage } }) => {
           alt="Juan's profile image"
           style={{ display: 'block', margin: '0 auto' }}
         />
-        <HeroTextWrapper>
+        <div className="hero-text">
           <h1>Juan Luna Ramirez</h1>
           <p>Hi, I'm a web developer from Los Angeles, CA</p>
-        </HeroTextWrapper>
+        </div>
       </Hero>
 
       <Section id="projects">

@@ -93,8 +93,8 @@ export const query = graphql`
 const CaseStudyTemplate = ({ data: { mdx: project } }) => {
   return (
     <Layout>
-      <Hero halfSplitLayout={!!project.frontmatter.coverImage}>
-        <div>
+      <Hero halfSplitLayout={!!project.frontmatter.coverImage} breakpoint="1024px">
+        <div className="hero-text">
           <h1>{project.frontmatter.title}</h1>
           <p>{project.frontmatter.description}</p>
         </div>
