@@ -16,6 +16,10 @@ const Grid = styled.div`
   @media (min-width: ${props => props.theme.screen.lg}) {
     grid-gap: ${props => props.theme.spacing['32']};
   }
+
+  div {
+    margin: 0;
+  }
 `;
 
 const ProfileImage = styled(Img)`
