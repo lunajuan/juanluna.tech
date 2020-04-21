@@ -178,6 +178,11 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
   main {
   }
 `;
