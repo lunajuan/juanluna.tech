@@ -17,7 +17,7 @@ const ProjectCard = ({ project }) => {
   return (
     <div>
       {project.coverImage && (
-        <ImgLink to={imageHref} gatsbyLink={!!project.slug}>
+        <ImgLink to={imageHref} gatsbyLink={project.slug}>
           <Img
             rounded
             shadow
@@ -37,7 +37,7 @@ const ProjectCard = ({ project }) => {
         {project.url && (
           <li>
             <a href={project.url} target="_blank" rel="noopener noreferrer">
-              {project.url}
+              {project.url.replace(/https?:\/\//, '')}
             </a>
           </li>
         )}
