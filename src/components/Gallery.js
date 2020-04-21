@@ -29,7 +29,7 @@ const Gallery = ({ images = [] }) => {
   return (
     <Grid>
       {images.map(image => (
-        <Item key={image.id}>
+        <Item key={image.image.id}>
           <Img
             rounded
             fluid={{
