@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components';
 const HeaderWrapper = styled.header`
   max-width: ${props => props.theme.pageMaxWidth.outer};
   margin: 0 auto;
+  width: 100%;
 
   @media (min-width: 1500px) {
     margin-bottom: ${props => props.theme.spacing['6']};

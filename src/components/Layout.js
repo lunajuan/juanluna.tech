@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import useSiteMetadata from '../hooks/useSiteMetadata';
 import 'typeface-poppins';
 import 'typeface-open-sans';
@@ -175,10 +175,21 @@ const GlobalStyles = createGlobalStyle`
   }
 
   main {
-    margin: 0 auto;
-
-    max-width: ${props => props.theme.pageMaxWidth.outer};
   }
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+`;
+
+const Main = styled.main`
+  margin: 0 auto;
+  width: 100%;
+  max-width: ${props => props.theme.pageMaxWidth.outer};
+  flex: 1 0 auto;
 `;
 
 const Layout = ({ children, headerImage }) => {
@@ -191,9 +202,11 @@ const Layout = ({ children, headerImage }) => {
         <title>{title}</title>
         <meta name="description" content={description} />
       </Helmet>
-      <Header siteTitle={title} headerImage={headerImage} />
-      <main>{children}</main>
-      <Footer />
+      <Wrapper>
+        <Header siteTitle={title} headerImage={headerImage} />
+        <Main>{children}</Main>
+        <Footer />
+      </Wrapper>
     </ThemeProvider>
   );
 };

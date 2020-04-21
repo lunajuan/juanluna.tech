@@ -7,6 +7,7 @@ const FooterWrapper = styled.footer`
   align-items: center;
   justify-content: center;
   padding: ${props => props.theme.spacing['20']} ${props => props.theme.pageGutter};
+  flex-shrink: 0;
 `;
 
 const FooterLink = styled.a`
