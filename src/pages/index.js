@@ -10,8 +10,12 @@ import ProjectCard from '../components/project-card';
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  grid-gap: ${props => props.theme.spacing['6']};
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: ${props => props.theme.spacing['16']};
+
+  @media (min-width: ${props => props.theme.screen.lg}) {
+    grid-gap: ${props => props.theme.spacing['32']};
+  }
 `;
 
 const ProfileImage = styled(Img)`
