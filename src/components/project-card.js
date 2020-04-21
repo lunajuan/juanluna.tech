@@ -20,6 +20,7 @@ const ProjectCard = ({ project }) => {
         <ImgLink to={imageHref} gatsbyLink={!!project.slug}>
           <Img
             rounded
+            shadow
             fluid={project.coverImage.image.childImageSharp.fluid}
             alt={project.coverImage.alt}
           />
