@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import Img from 'gatsby-image';
+import Img from './image';
 
 const Grid = styled.div`
   display: grid;
@@ -19,16 +19,6 @@ const Grid = styled.div`
 
 const Item = styled.div`
   margin: 0;
-
-  img,
-  source,
-  picture {
-    margin: 0;
-  }
-
-  .gatsby-image-wrapper {
-    border-radius: ${props => props.theme.borderRadius.lg};
-  }
 `;
 
 const Gallery = ({ images = [] }) => {
@@ -39,8 +29,9 @@ const Gallery = ({ images = [] }) => {
   return (
     <Grid>
       {images.map(image => (
-        <Item key={image.id}>
+        <Item key={image.image.id}>
           <Img
+            rounded
             fluid={{
               ...image.image.childImageSharp.fluid,
               sizes: `(min-width: ${theme.pageMaxWidth.outer}) 770px, (min-width: ${theme.screen.xl}) 33vw, (min-width: ${theme.screen.sm}) 50vw, 100vw`,

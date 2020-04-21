@@ -3,7 +3,15 @@ import styled from 'styled-components';
 import useSiteMetadata from '../hooks/useSiteMetadata';
 
 const FooterWrapper = styled.footer`
-  border: 1px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: ${props => props.theme.spacing['20']} ${props => props.theme.pageGutter};
+  flex-shrink: 0;
+`;
+
+const FooterLink = styled.a`
+  margin-left: ${props => props.theme.spacing['8']};
 `;
 
 const Footer = () => {
@@ -12,15 +20,15 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <div>
-        <a href={github} target="_blank" rel="noopener noreferrer">
+        <FooterLink href={github} target="_blank" rel="noopener noreferrer">
           Github
-        </a>
-        <a href={instagram} target="_blank" rel="noopener noreferrer">
+        </FooterLink>
+        <FooterLink href={instagram} target="_blank" rel="noopener noreferrer">
           Instagram
-        </a>
-        <a href={twitter} target="_blank" rel="noopener noreferrer">
+        </FooterLink>
+        <FooterLink href={twitter} target="_blank" rel="noopener noreferrer">
           Twitter
-        </a>
+        </FooterLink>
       </div>
     </FooterWrapper>
   );

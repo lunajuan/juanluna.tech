@@ -38,7 +38,9 @@ gallery:
     caption: Snipcart displaying custom shipping rate calculations
 ---
 
-<section id="frontend">
+import Section from '../../../src/components/section.js';
+
+<Section id="frontend" stripped rounded>
 
 ## Frontend
 
@@ -78,9 +80,9 @@ Webpack bundles all client-side code from **ES6** to ES5, including polyfills fo
 </div>
 </div>
 
-</section>
+</Section>
 
-<section id="backend">
+<Section id="backend" stripped>
 
 ## Backend
 
@@ -125,9 +127,9 @@ Deployed to a secure Nginx server on **DigitalOcean**
 </div>
 </div>
 
-</section>
+</Section>
 
-<section id="third-party">
+<Section id="third-party" stripped>
 
 <div className="reverse-order">
 
@@ -175,4 +177,4 @@ I built a custom integration between Snipcart and Shipworks to manage the shipme
 
 </div>
 
-</section>
+</Section>

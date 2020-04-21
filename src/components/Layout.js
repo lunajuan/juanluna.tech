@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import useSiteMetadata from '../hooks/useSiteMetadata';
 import 'typeface-poppins';
 import 'typeface-open-sans';
@@ -12,6 +12,7 @@ const theme = {
   text: {
     primary: '#1A202C',
     secondary: '#718096',
+    link: '#0967D2',
   },
   background: {
     light: '#EDF2F7',
@@ -136,6 +137,7 @@ const GlobalStyles = createGlobalStyle`
   h4,
   h6 {
     font-family: ${props => props.theme.fontFamily.poppins};
+    font-weight: ${props => props.theme.fontWeight.bold};
     line-height: ${props => props.theme.lineHeight.tight};
 
     + * {
@@ -143,23 +145,63 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  h2 {
+    font-size: ${props => props.theme.fontSize['2xl']};
+
+    @media (min-width: ${props => props.theme.screen.md}) {
+      font-size: ${props => props.theme.fontSize['4xl']};
+    }
+
+    + * {
+      margin-top: ${props => props.theme.spacing['10']};
+    }
+  }
+
+  h3 {
+    font-size: ${props => props.theme.fontSize.lg};
+
+    @media (min-width: ${props => props.theme.screen.md}) {
+      font-size: ${props => props.theme.fontSize.xl};
+    }
+  }
+
+  p {
+    max-width: 35em;
+  }
+
   li {
     margin-top: ${props => props.theme.spacing['1']};
   }
 
+  a {
+    color: ${props => props.theme.text.link};
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
   main {
-    padding: 0 ${props => props.theme.pageGutter};
-    margin: 0 auto;
-
-    @media (min-width: ${props => props.theme.screen.md}) {
-      padding: 0 ${props => props.theme.pageGutter};
-    }
-
-    max-width: ${props => props.theme.pageMaxWidth.outer};
   }
 `;
 
-const Layout = ({ children }) => {
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+`;
+
+const Main = styled.main`
+  margin: 0 auto;
+  width: 100%;
+  max-width: ${props => props.theme.pageMaxWidth.outer};
+  flex: 1 0 auto;
+`;
+
+const Layout = ({ children, headerImage }) => {
   const { title, description } = useSiteMetadata();
   return (
     <ThemeProvider theme={theme}>
@@ -169,9 +211,11 @@ const Layout = ({ children }) => {
         <title>{title}</title>
         <meta name="description" content={description} />
       </Helmet>
-      <Header siteTitle={title} />
-      <main>{children}</main>
-      <Footer />
+      <Wrapper>
+        <Header siteTitle={title} headerImage={headerImage} />
+        <Main>{children}</Main>
+        <Footer />
+      </Wrapper>
     </ThemeProvider>
   );
 };
