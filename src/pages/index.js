@@ -14,10 +14,6 @@ const Grid = styled.div`
   grid-gap: ${props => props.theme.spacing['6']};
 `;
 
-const Card = styled.div`
-  margin: 0;
-`;
-
 const ProfileImage = styled(Img)`
   max-width: 200px;
 
