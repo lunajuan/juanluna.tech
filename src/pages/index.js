@@ -49,7 +49,7 @@ export default ({ data: { profileImage } }) => {
         </HeroTextWrapper>
       </Hero>
 
-      <Section>
+      <Section id="projects">
         <h2>Projects</h2>
         <Grid>
           {projects.map(project => (
