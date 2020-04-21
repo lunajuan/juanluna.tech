@@ -181,7 +181,7 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children, headerImage }) => {
   const { title, description } = useSiteMetadata();
   return (
     <ThemeProvider theme={theme}>
@@ -191,7 +191,7 @@ const Layout = ({ children }) => {
         <title>{title}</title>
         <meta name="description" content={description} />
       </Helmet>
-      <Header siteTitle={title} />
+      <Header siteTitle={title} headerImage={headerImage} />
       <main>{children}</main>
       <Footer />
     </ThemeProvider>

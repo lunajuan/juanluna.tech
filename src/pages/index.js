@@ -32,7 +32,7 @@ export default ({ data: { profileImage } }) => {
   const projects = useProjects();
 
   return (
-    <Layout>
+    <Layout headerImage={false}>
       <Hero halfSplitLayout>
         <ProfileImage
           circle
