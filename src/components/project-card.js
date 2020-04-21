@@ -21,7 +21,10 @@ const ProjectCard = ({ project }) => {
           <Img
             rounded
             shadow
-            fluid={project.coverImage.image.childImageSharp.fluid}
+            fluid={{
+              ...project.coverImage.image.childImageSharp.fluid,
+              sizes: `(min-width: 1500px) 400px, (min-width: 1421px) 33vw, (min-width: 831px) 50vw, 100vw`,
+            }}
             alt={project.coverImage.alt}
           />
         </ImgLink>

@@ -16,8 +16,8 @@ const useProjects = () => {
             coverImage {
               image {
                 childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid
+                  fluid(maxWidth: 1000, quality: 85) {
+                    ...GatsbyImageSharpFluid_withWebp
                   }
                 }
               }
