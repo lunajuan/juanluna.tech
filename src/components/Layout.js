@@ -160,6 +160,10 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  p {
+    max-width: 35em;
+  }
+
   li {
     margin-top: ${props => props.theme.spacing['1']};
   }

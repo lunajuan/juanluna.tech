@@ -10,7 +10,6 @@ import Section from '../components/section';
 
 const Body = styled.div`
   p {
-    max-width: 35em;
     margin: 0 auto ${props => props.theme.spacing['10']};
     font-size: ${props => props.theme.fontSize.base};
     line-height: ${props => props.theme.lineHeight.relaxed};
