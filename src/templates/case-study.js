@@ -9,28 +9,6 @@ import Hero from '../styles/hero';
 import Section from '../components/section';
 
 const Body = styled.div`
-  h2,
-  h3 {
-    font-weight: ${props => props.theme.fontWeight.bold};
-    margin: ${props => props.theme.spacing['2']} 0;
-  }
-
-  h2 {
-    font-size: ${props => props.theme.fontSize['2xl']};
-
-    @media (min-width: ${props => props.theme.screen.md}) {
-      font-size: ${props => props.theme.fontSize['4xl']};
-    }
-  }
-
-  h3 {
-    font-size: ${props => props.theme.fontSize.lg};
-
-    @media (min-width: ${props => props.theme.screen.md}) {
-      font-size: ${props => props.theme.fontSize.xl};
-    }
-  }
-
   p {
     max-width: 35em;
     margin: 0 auto ${props => props.theme.spacing['10']};

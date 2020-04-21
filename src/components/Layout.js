@@ -136,10 +136,27 @@ const GlobalStyles = createGlobalStyle`
   h4,
   h6 {
     font-family: ${props => props.theme.fontFamily.poppins};
+    font-weight: ${props => props.theme.fontWeight.bold};
     line-height: ${props => props.theme.lineHeight.tight};
 
     + * {
       margin-top: ${props => props.theme.spacing['2']};
+    }
+  }
+
+  h2 {
+    font-size: ${props => props.theme.fontSize['2xl']};
+
+    @media (min-width: ${props => props.theme.screen.md}) {
+      font-size: ${props => props.theme.fontSize['4xl']};
+    }
+  }
+
+  h3 {
+    font-size: ${props => props.theme.fontSize.lg};
+
+    @media (min-width: ${props => props.theme.screen.md}) {
+      font-size: ${props => props.theme.fontSize.xl};
     }
   }
 
