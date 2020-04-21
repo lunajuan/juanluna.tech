@@ -113,10 +113,10 @@ const CaseStudyTemplate = ({ data: { mdx: project } }) => {
       </Hero>
       <Body>
         <MDXRenderer>{project.body}</MDXRenderer>
-        {project.frontmatter.gallery.length && (
+        {project.frontmatter.gallery && (
           <Section id="screenshots">
             <h2>Screenshots</h2>
-            <Gallery images={project.frontmatter.gallery} />
+            {project.frontmatter.gallery.length && <Gallery images={project.frontmatter.gallery} />}
           </Section>
         )}
       </Body>
