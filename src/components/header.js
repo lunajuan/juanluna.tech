@@ -82,8 +82,7 @@ const Header = ({ siteTitle, headerImage = true }) => {
 
         <SiteLinks>
           <SiteLink to="/magma-products">Magma Products</SiteLink>
-          <SiteLink to="/#projects">Projects</SiteLink>
-          <SiteLink to="/cms-react-demo-case-study">Art</SiteLink>
+          <SiteLink to="/#projects">All Projects</SiteLink>
         </SiteLinks>
       </NavWrapper>
     </HeaderWrapper>

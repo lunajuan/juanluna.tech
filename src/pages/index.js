@@ -16,6 +16,10 @@ const Grid = styled.div`
   @media (min-width: ${props => props.theme.screen.lg}) {
     grid-gap: ${props => props.theme.spacing['32']};
   }
+
+  div {
+    margin: 0;
+  }
 `;
 
 const ProfileImage = styled(Img)`
@@ -42,8 +46,8 @@ export default ({ data: { profileImage } }) => {
           style={{ display: 'block', margin: '0 auto' }}
         />
         <div className="hero-text">
-          <h1>Juan Luna Ramirez</h1>
-          <p>Hi, I'm a web developer from Los Angeles, CA</p>
+          <h1>Hi, I'm Juan Luna Ramirez</h1>
+          <p>I'm a full Stack JavaScript developer from Los Angeles, CA.</p>
         </div>
       </Hero>
 
