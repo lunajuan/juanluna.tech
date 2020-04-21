@@ -2,15 +2,28 @@ import React from 'react';
 import { Link } from 'gatsby';
 import Img from './image';
 
+const ImgLink = ({ children, gatsbyLink = false, to }) => {
+  if (gatsbyLink) return <Link to={to}>{children}</Link>;
+  return (
+    <a href={to} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  );
+};
+
 const ProjectCard = ({ project }) => {
+  const imageHref = project.slug || project.github || project.codesandbox || project.url;
+
   return (
     <div>
       {project.coverImage && (
-        <Img
-          rounded
-          fluid={project.coverImage.image.childImageSharp.fluid}
-          alt={project.coverImage.alt}
-        />
+        <ImgLink to={imageHref} gatsbyLink={!!project.slug}>
+          <Img
+            rounded
+            fluid={project.coverImage.image.childImageSharp.fluid}
+            alt={project.coverImage.alt}
+          />
+        </ImgLink>
       )}
       <h3>{project.title}</h3>
       <p>{project.description}</p>
