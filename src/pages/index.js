@@ -53,7 +53,7 @@ export default ({ data: { profileImage } }) => {
         <h2>Projects</h2>
         <Grid>
           {projects.map(project => (
-            <ProjectCard project={project} />
+            <ProjectCard key={project.id} project={project} />
           ))}
         </Grid>
       </Section>
