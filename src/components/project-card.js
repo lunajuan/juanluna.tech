@@ -17,7 +17,7 @@ const ProjectCard = ({ project }) => {
   return (
     <div>
       {project.coverImage && (
-        <ImgLink to={imageHref} gatsbyLink={project.slug}>
+        <ImgLink to={project.slug ? `/${project.slug}` : imageHref} gatsbyLink={project.slug}>
           <Img
             rounded
             shadow
@@ -31,7 +31,7 @@ const ProjectCard = ({ project }) => {
       <ul>
         {project.slug && (
           <li>
-            <Link to={project.slug}>Case Study</Link>
+            <Link to={`/${project.slug}`}>Case Study</Link>
           </li>
         )}
         {project.url && (
