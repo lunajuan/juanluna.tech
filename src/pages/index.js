@@ -49,6 +49,7 @@ export default ({ data: { profileImage } }) => {
       </Hero>
 
       <Section>
+        <h2>Projects</h2>
         <Grid>
           {projects.map(project => (
             <Card>
@@ -59,7 +60,7 @@ export default ({ data: { profileImage } }) => {
                   alt={project.coverImage.alt}
                 />
               )}
-              <h2>{project.title}</h2>
+              <h3>{project.title}</h3>
               <p>{project.description}</p>
               <ul>
                 {project.slug && (
