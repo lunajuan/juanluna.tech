@@ -6,26 +6,9 @@ import Img from '../components/image';
 import Gallery from '../components/Gallery';
 import Layout from '../components/Layout';
 import Hero from '../styles/hero';
+import Section from '../components/section';
 
 const Body = styled.div`
-  section {
-    /* we have to fight off the gutter created by the padding on main since we
-    want to have the background color extend 100vw */
-    margin: 0 -${props => props.theme.pageGutter};
-    padding: ${props => props.theme.spacing['10']} ${props => props.theme.pageGutter};
-
-    @media (min-width: ${props => props.theme.screen.lg}) {
-      border-radius: ${props => props.theme.borderRadius.default};
-      margin: 0;
-      padding-left: ${props => props.theme.spacing['16']};
-      padding-right: ${props => props.theme.spacing['16']};
-    }
-
-    &:nth-child(odd) {
-      background-color: ${props => props.theme.background.light};
-    }
-  }
-
   h2,
   h3 {
     font-weight: ${props => props.theme.fontWeight.bold};
@@ -154,10 +137,10 @@ const CaseStudyTemplate = ({ data: { mdx: project } }) => {
       <Body>
         <MDXRenderer>{project.body}</MDXRenderer>
         {project.frontmatter.gallery.length && (
-          <section id="screenshots">
+          <Section id="screenshots">
             <h2>Screenshots</h2>
             <Gallery images={project.frontmatter.gallery} />
-          </section>
+          </Section>
         )}
       </Body>
     </Layout>

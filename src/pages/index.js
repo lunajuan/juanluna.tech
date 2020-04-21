@@ -5,6 +5,7 @@ import Img from '../components/image';
 import Layout from '../components/Layout';
 import useProjects from '../hooks/useProjects';
 import Hero from '../styles/hero';
+import Section from '../components/section';
 
 const Grid = styled.div`
   display: grid;
@@ -47,49 +48,51 @@ export default ({ data: { profileImage } }) => {
         </HeroTextWrapper>
       </Hero>
 
-      <Grid>
-        {projects.map(project => (
-          <Card>
-            {project.coverImage && (
-              <Img
-                rounded
-                fluid={project.coverImage.image.childImageSharp.fluid}
-                alt={project.coverImage.alt}
-              />
-            )}
-            <h2>{project.title}</h2>
-            <p>{project.description}</p>
-            <ul>
-              {project.slug && (
-                <li>
-                  <Link to={project.slug}>Case Study</Link>
-                </li>
+      <Section>
+        <Grid>
+          {projects.map(project => (
+            <Card>
+              {project.coverImage && (
+                <Img
+                  rounded
+                  fluid={project.coverImage.image.childImageSharp.fluid}
+                  alt={project.coverImage.alt}
+                />
               )}
-              {project.url && (
-                <li>
-                  <a href={project.url} target="_blank" rel="noopener noreferrer">
-                    {project.url}
-                  </a>
-                </li>
-              )}
-              {project.github && (
-                <li>
-                  <a href={project.github} target="_blank" rel="noopener noreferrer">
-                    github
-                  </a>
-                </li>
-              )}
-              {project.codesandbox && (
-                <li>
-                  <a href={project.codesandbox} target="_blank" rel="noopener noreferrer">
-                    codesandbox
-                  </a>
-                </li>
-              )}
-            </ul>
-          </Card>
-        ))}
-      </Grid>
+              <h2>{project.title}</h2>
+              <p>{project.description}</p>
+              <ul>
+                {project.slug && (
+                  <li>
+                    <Link to={project.slug}>Case Study</Link>
+                  </li>
+                )}
+                {project.url && (
+                  <li>
+                    <a href={project.url} target="_blank" rel="noopener noreferrer">
+                      {project.url}
+                    </a>
+                  </li>
+                )}
+                {project.github && (
+                  <li>
+                    <a href={project.github} target="_blank" rel="noopener noreferrer">
+                      github
+                    </a>
+                  </li>
+                )}
+                {project.codesandbox && (
+                  <li>
+                    <a href={project.codesandbox} target="_blank" rel="noopener noreferrer">
+                      codesandbox
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </Card>
+          ))}
+        </Grid>
+      </Section>
     </Layout>
   );
 };
