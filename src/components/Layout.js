@@ -12,6 +12,7 @@ const theme = {
   text: {
     primary: '#1A202C',
     secondary: '#718096',
+    link: '#0967D2',
   },
   background: {
     light: '#EDF2F7',
@@ -166,6 +167,11 @@ const GlobalStyles = createGlobalStyle`
 
   li {
     margin-top: ${props => props.theme.spacing['1']};
+  }
+
+  a {
+    color: ${props => props.theme.text.link};
+    text-decoration: none;
   }
 
   main {
