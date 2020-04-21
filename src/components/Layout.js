@@ -151,6 +151,10 @@ const GlobalStyles = createGlobalStyle`
     @media (min-width: ${props => props.theme.screen.md}) {
       font-size: ${props => props.theme.fontSize['4xl']};
     }
+
+    + * {
+      margin-top: ${props => props.theme.spacing['10']};
+    }
   }
 
   h3 {
