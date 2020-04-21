@@ -1,11 +1,12 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import Img from '../components/image';
 import Layout from '../components/Layout';
 import useProjects from '../hooks/useProjects';
 import Hero from '../styles/hero';
 import Section from '../components/section';
+import ProjectCard from '../components/project-card';
 
 const Grid = styled.div`
   display: grid;
@@ -52,45 +53,7 @@ export default ({ data: { profileImage } }) => {
         <h2>Projects</h2>
         <Grid>
           {projects.map(project => (
-            <Card>
-              {project.coverImage && (
-                <Img
-                  rounded
-                  fluid={project.coverImage.image.childImageSharp.fluid}
-                  alt={project.coverImage.alt}
-                />
-              )}
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <ul>
-                {project.slug && (
-                  <li>
-                    <Link to={project.slug}>Case Study</Link>
-                  </li>
-                )}
-                {project.url && (
-                  <li>
-                    <a href={project.url} target="_blank" rel="noopener noreferrer">
-                      {project.url}
-                    </a>
-                  </li>
-                )}
-                {project.github && (
-                  <li>
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      github
-                    </a>
-                  </li>
-                )}
-                {project.codesandbox && (
-                  <li>
-                    <a href={project.codesandbox} target="_blank" rel="noopener noreferrer">
-                      codesandbox
-                    </a>
-                  </li>
-                )}
-              </ul>
-            </Card>
+            <ProjectCard project={project} />
           ))}
         </Grid>
       </Section>
