@@ -55,6 +55,10 @@ const SiteLinks = styled.div`
 
 const SiteLink = styled(Link)`
   margin-left: ${props => props.theme.spacing['8']};
+
+  &:first-child {
+    margin: 0;
+  }
 `;
 
 const Header = ({ siteTitle, headerImage = true }) => {
