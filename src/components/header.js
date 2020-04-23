@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const HeaderWrapper = styled.header`
   max-width: ${props => props.theme.pageMaxWidth.outer};
@@ -55,6 +55,10 @@ const SiteLinks = styled.div`
 
 const SiteLink = styled(Link)`
   margin-left: ${props => props.theme.spacing['8']};
+
+  &:first-child {
+    margin: 0;
+  }
 `;
 
 const Header = ({ siteTitle, headerImage = true }) => {
