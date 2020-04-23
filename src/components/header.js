@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const HeaderWrapper = styled.header`
   max-width: ${props => props.theme.pageMaxWidth.outer};
