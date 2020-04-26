@@ -3,6 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
+const config = require('./website-config');
 
 module.exports = {
   siteMetadata: {
@@ -64,6 +65,20 @@ module.exports = {
       options: {
         name: 'src',
         path: 'src',
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: config.siteTitle,
+        short_name: config.siteTitleShort,
+        description: config.siteDescription,
+        start_url: config.pathPrefix,
+        lang: config.lang,
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
+        display: 'standalone',
+        icon: 'src/images/icon.png',
       },
     },
   ],
