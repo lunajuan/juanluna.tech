@@ -7,6 +7,7 @@ import 'typeface-poppins';
 import 'typeface-open-sans';
 import Header from './header';
 import Footer from './footer';
+import metaImage from '../../static/images/metaImage.jpg';
 
 const theme = {
   text: {
@@ -210,6 +211,7 @@ const Layout = ({ children, headerImage }) => {
         <html lang="en" />
         <title>{title}</title>
         <meta name="description" content={description} />
+        <meta name="image" content={metaImage} />
       </Helmet>
       <Wrapper>
         <Header siteTitle={title} headerImage={headerImage} />

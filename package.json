@@ -2,7 +2,7 @@
   "name": "juanluna.tech",
   "private": true,
   "description": "Juan's personal website",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
@@ -19,6 +19,7 @@
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.20.12",
     "gatsby-image": "^2.3.2",
+    "gatsby-plugin-manifest": "^2.3.7",
     "gatsby-plugin-mdx": "^1.1.4",
     "gatsby-plugin-react-helmet": "^3.2.1",
     "gatsby-plugin-sharp": "^2.5.4",
