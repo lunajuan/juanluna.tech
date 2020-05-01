@@ -212,6 +212,12 @@ const Layout = ({ children, headerImage }) => {
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="image" content={metaImage} />
+
+        {/* OpenGraph tags */}
+        <meta property="og:url" content="https://juanluna.tech" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={metaImage} />
       </Helmet>
       <Wrapper>
         <Header siteTitle={title} headerImage={headerImage} />
