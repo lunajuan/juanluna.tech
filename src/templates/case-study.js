@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
 import Img from '../components/image';
 import Gallery from '../components/Gallery';
@@ -85,7 +84,7 @@ export const query = graphql`
               }
             }
             imageAlt
-            descriptionMd
+            description
             caption
           }
         }
@@ -98,13 +97,13 @@ const SectionItems = ({ items }) => {
   return (
     <Body>
       <div className="grid">
-        {items.map(({ header, descriptionMd, imageFileName, imageAlt }) => (
+        {items.map(({ header, description, imageFileName, imageAlt }) => (
           <div className="grid-item">
             {imageFileName && (
               <Img alt={imageAlt || header} fluid={imageFileName.childImageSharp.fluid} />
             )}
             <h3>{header}</h3>
-            {descriptionMd && <p>{descriptionMd}</p>}
+            {description && <p>{description}</p>}
           </div>
         ))}
       </div>
