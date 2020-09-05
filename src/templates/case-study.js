@@ -6,6 +6,7 @@ import Gallery from '../components/Gallery';
 import Layout from '../components/Layout';
 import Hero from '../styles/hero';
 import Section from '../components/section';
+import Seo from '../components/Seo';
 
 const Body = styled.div`
   p {
@@ -59,12 +60,14 @@ export const query = graphql`
   query($slug: String!) {
     mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
+        slug
         header
         description
         imageFileName {
           childImageSharp {
             fluid(maxWidth: 1000, quality: 80) {
               ...GatsbyImageSharpFluid_withWebp
+              src
             }
           }
         }
@@ -116,6 +119,7 @@ const CaseStudyTemplate = ({ data: { mdx } }) => {
 
   const {
     frontmatter: {
+      slug,
       header: heroHeader,
       description,
       imageFileName: heroFileName,
@@ -126,6 +130,13 @@ const CaseStudyTemplate = ({ data: { mdx } }) => {
 
   return (
     <Layout>
+      {/* override seo tags */}
+      <Seo
+        title={heroHeader}
+        url={`/${slug}`}
+        description={`${heroHeader} Case Study: ${description}`}
+        image={heroFileName.childImageSharp.fluid.src}
+      />
       <Hero halfSplitLayout={!!heroFileName} breakpoint="1024px">
         <div className="hero-text">
           <h1>{heroHeader}</h1>

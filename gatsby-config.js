@@ -9,8 +9,10 @@ module.exports = {
   siteMetadata: {
     title: config.siteTitle,
     description: config.siteDescription,
+    url: config.url,
     github: config.github,
     twitter: config.twitter,
+    twitterHandle: config.twitterHandle,
     instagram: config.instagram,
   },
   plugins: [
