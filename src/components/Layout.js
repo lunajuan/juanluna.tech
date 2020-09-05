@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import useSiteMetadata from '../hooks/useSiteMetadata';
 import 'typeface-poppins';
 import 'typeface-open-sans';
+import Seo from './Seo';
 import Header from './header';
 import Footer from './footer';
-import metaImage from '../../static/images/metaImage.jpg';
 
 const theme = {
   text: {
@@ -203,22 +202,12 @@ const Main = styled.main`
 `;
 
 const Layout = ({ children, headerImage }) => {
-  const { title, description } = useSiteMetadata();
+  const { title } = useSiteMetadata();
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Helmet>
-        <html lang="en" />
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta name="image" content={metaImage} />
-
-        {/* OpenGraph tags */}
-        <meta property="og:url" content="https://juanluna.tech" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={metaImage} />
-      </Helmet>
+      <Seo />
       <Wrapper>
         <Header siteTitle={title} headerImage={headerImage} />
         <Main>{children}</Main>

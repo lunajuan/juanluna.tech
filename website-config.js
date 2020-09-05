@@ -6,7 +6,9 @@ module.exports = {
   lang: 'en',
   backgroundColor: '#014807',
   themeColor: '#18981D',
+  url: 'https://juanluna.tech',
   github: 'https://github.com/lunajuan',
+  twitterHandle: '@JuanLunaRamirez',
   twitter: 'https://twitter.com/JuanLunaRamirez',
   instagram: 'https://www.instagram.com/luna_ramirez/',
 };
