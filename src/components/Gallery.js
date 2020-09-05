@@ -21,23 +21,23 @@ const Item = styled.div`
   margin: 0;
 `;
 
-const Gallery = ({ images = [] }) => {
+const Gallery = ({ items = [] }) => {
   const theme = useContext(ThemeContext);
 
-  if (!images.length) return null;
+  if (!items.length) return null;
 
   return (
     <Grid>
-      {images.map(image => (
-        <Item key={image.image.id}>
+      {items.map((item, index) => (
+        <Item key={index}>
           <Img
             rounded
             fluid={{
-              ...image.image.childImageSharp.fluid,
+              ...item.imageFileName.childImageSharp.fluid,
               sizes: `(min-width: ${theme.pageMaxWidth.outer}) 770px, (min-width: ${theme.screen.xl}) 33vw, (min-width: ${theme.screen.sm}) 50vw, 100vw`,
             }}
             style={{ display: 'block', width: '100%' }}
-            alt={image.alt || null}
+            alt={item.imageAlt || null}
           />
         </Item>
       ))}

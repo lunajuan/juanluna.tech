@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
 import Img from '../components/image';
 import Gallery from '../components/Gallery';
@@ -60,66 +59,106 @@ export const query = graphql`
   query($slug: String!) {
     mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
-        title
+        header
         description
-        coverImage {
-          image {
-            childImageSharp {
-              fluid(maxWidth: 1000, quality: 80) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+        imageFileName {
+          childImageSharp {
+            fluid(maxWidth: 1000, quality: 80) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
-          alt
         }
-        gallery {
-          image {
-            id
-            childImageSharp {
-              fluid(maxWidth: 1000, quality: 80) {
-                ...GatsbyImageSharpFluid_withWebp
+        imageAlt
+        sections {
+          anchor
+          header
+          view
+          subheader
+          items {
+            header
+            imageFileName {
+              childImageSharp {
+                fluid(maxWidth: 1000, quality: 80) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
               }
             }
+            imageAlt
+            description
+            caption
           }
-          alt
-          caption
         }
       }
-      body
     }
   }
 `;
 
-const CaseStudyTemplate = ({ data: { mdx: project } }) => {
+const SectionItems = ({ items }) => {
+  return (
+    <Body>
+      <div className="grid">
+        {items.map(({ header, description, imageFileName, imageAlt }) => (
+          <div className="grid-item">
+            {imageFileName && (
+              <Img alt={imageAlt || header} fluid={imageFileName.childImageSharp.fluid} />
+            )}
+            <h3>{header}</h3>
+            {description && <p>{description}</p>}
+          </div>
+        ))}
+      </div>
+    </Body>
+  );
+};
+
+const CaseStudyTemplate = ({ data: { mdx } }) => {
+  if (!mdx.frontmatter) return null;
+
+  const {
+    frontmatter: {
+      header: heroHeader,
+      description,
+      imageFileName: heroFileName,
+      imageAlt: heroImageAlt,
+      sections,
+    },
+  } = mdx;
+
   return (
     <Layout>
-      <Hero halfSplitLayout={!!project.frontmatter.coverImage} breakpoint="1024px">
+      <Hero halfSplitLayout={!!heroFileName} breakpoint="1024px">
         <div className="hero-text">
-          <h1>{project.frontmatter.title}</h1>
-          <p>{project.frontmatter.description}</p>
+          <h1>{heroHeader}</h1>
+          <p>{description}</p>
         </div>
-        {project.frontmatter.coverImage && (
+        {heroFileName && (
           <Img
             rounded
             shadow
-            alt={project.frontmatter.coverImage.alt || null}
+            alt={heroImageAlt || heroHeader}
             fluid={{
-              ...project.frontmatter.coverImage.image.childImageSharp.fluid,
+              ...heroFileName.childImageSharp.fluid,
               sizes: '(min-width: 1500px) 700w, (min-width: 1024px) 50vw, 100vw',
             }}
             imgStyle={{ objectFit: 'contain' }}
           />
         )}
       </Hero>
-      <Body>
-        <MDXRenderer>{project.body}</MDXRenderer>
-        {project.frontmatter.gallery && (
-          <Section id="screenshots">
-            <h2>Screenshots</h2>
-            {project.frontmatter.gallery.length && <Gallery images={project.frontmatter.gallery} />}
+      {sections &&
+        sections.length &&
+        sections.map(({ anchor, header, view, subheader, items }, index) => (
+          <Section key={header} stripped rounded={index % 2 !== 0} id={anchor}>
+            <h2>{header}</h2>
+            {view === 'gallery' ? (
+              <Section id="screenshots">
+                <h2>Screenshots</h2>
+                {items && <Gallery items={items} />}
+              </Section>
+            ) : (
+              <SectionItems items={items} />
+            )}
           </Section>
-        )}
-      </Body>
+        ))}
     </Layout>
   );
 };
