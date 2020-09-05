@@ -16,16 +16,16 @@ const ProjectCard = ({ project }) => {
 
   return (
     <div>
-      {project.coverImage && (
+      {project.imageFileName && (
         <ImgLink to={project.slug ? `/${project.slug}` : imageHref} gatsbyLink={project.slug}>
           <Img
             rounded
             shadow
             fluid={{
-              ...project.coverImage.image.childImageSharp.fluid,
+              ...project.imageFileName.childImageSharp.fluid,
               sizes: `(min-width: 1500px) 400px, (min-width: 1421px) 33vw, (min-width: 831px) 50vw, 100vw`,
             }}
-            alt={project.coverImage.alt}
+            alt={project.imageAlt}
           />
         </ImgLink>
       )}
