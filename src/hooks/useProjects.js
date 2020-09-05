@@ -13,16 +13,14 @@ const useProjects = () => {
             url
             github
             codesandbox
-            coverImage {
-              image {
-                childImageSharp {
-                  fluid(maxWidth: 1000, quality: 85) {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
+            imageFileName {
+              childImageSharp {
+                fluid(maxWidth: 1000, quality: 85) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
-              alt
             }
+            imageAlt
           }
         }
       }
@@ -32,10 +30,10 @@ const useProjects = () => {
   return data.allMdx.nodes.map(project => {
     const {
       id,
-      frontmatter: { title, description, slug, url, github, codesandbox, coverImage },
+      frontmatter: { title, description, slug, url, github, codesandbox, imageFileName, imageAlt },
     } = project;
 
-    return { id, title, description, slug, url, github, codesandbox, coverImage };
+    return { id, title, description, slug, url, github, codesandbox, imageFileName, imageAlt };
   });
 };
 
