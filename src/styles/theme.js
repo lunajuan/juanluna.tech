@@ -7,10 +7,10 @@ const colors = {
 };
 
 const theme = {
+  ...colors,
   text: {
     primary: colors.dark,
     secondary: colors.grey,
-    link: colors.blue,
   },
   background: {
     light: colors.lightGrey,

@@ -3,8 +3,9 @@ import theme from './theme';
 
 const GlobalStyles = createGlobalStyle`
   html {
+    box-sizing: border-box;
     font-size: 10px;
-    font-family: ${theme.fontFamily.openSans};
+    font-family: ${theme.fontFamily.openSans} ${theme.fontFamily.sans};
     color: ${theme.text.primary};
   }
 
@@ -41,6 +42,7 @@ const GlobalStyles = createGlobalStyle`
   h6 {
     font-family: ${theme.fontFamily.poppins};
     font-weight: ${theme.fontWeight.bold};
+    font-style: italic;
     line-height: ${theme.lineHeight.tight};
 
     + * {
@@ -77,14 +79,34 @@ const GlobalStyles = createGlobalStyle`
   }
 
   a {
-    color: ${theme.text.link};
+    color: ${theme.text.primary};
     text-decoration: none;
+  }
+
+  p a, li a {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      background: ${theme.green};
+      content: '';
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      z-index: -1;
+    }
   }
 
   ul {
     list-style: none;
     padding: 0;
   }
+
+  ::selection {
+    background: ${theme.green};
+  }
+
+  /* TODO: add global image styles */
 `;
 
 export default GlobalStyles;
