@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import useSiteMetadata from '../hooks/useSiteMetadata';
 import 'typeface-poppins';
 import 'typeface-open-sans';
+import useSiteMetadata from '../hooks/useSiteMetadata';
 import theme from '../styles/theme';
 import GlobalStyles from '../styles/GlobalStyles';
 import Seo from './Seo';
