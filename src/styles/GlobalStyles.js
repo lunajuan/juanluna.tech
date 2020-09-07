@@ -103,7 +103,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   ::selection {
-    background: ${theme.green};
+    background: ${theme.yellow};
   }
 
   /* TODO: add global image styles */
