@@ -6,9 +6,11 @@ const useSiteMetadata = () => {
       site {
         siteMetadata {
           title
+          url
           description
           github
           twitter
+          twitterHandle
           instagram
         }
       }

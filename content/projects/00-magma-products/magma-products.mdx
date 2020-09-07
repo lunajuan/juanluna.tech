@@ -1,11 +1,10 @@
 ---
 order: 0
-title: Magma Products
+header: Magma Products
 slug: magma-products
 description: Magma Products is an e-commerce Node application. Features include the ability to purchase products,  easily manage orders and product information with automated tools and custom third-party integrations.
-coverImage:
-  image: images/magma-products.jpg
-  alt: magma products home page
+imageFileName: images/magma-products.jpg
+imageAlt: magma products home page
 tech:
 - mongodb
 - express
@@ -14,167 +13,144 @@ tech:
 - pug
 - jquery
 - restapi
-gallery:
-  - image: ./images/react-cms-ui-1.jpg
-    alt: 'screenshot of magma products content management system user interface product search'
-    caption: CMS with React
-  - image: ./images/react-cms-ui-2.jpg
-    alt: screenshot of magma products content management system user interface showing product edit form
-    caption: CMS with React
-  - image: ./images/nav-ui.jpg
-    alt: screenshot of magma products navigation on public site for desktop and mobile screens
-    caption: Responsive layouts
-  - image: ./images/cookware-category.jpg
-    alt: screenshot of magma cookware category page
-    caption: Product category page
-  - image: ./images/mounts.jpg
-    alt: screenshot of magma mounts page
-    caption: Product has many products
-  - image: ./images/server-valid.jpg
-    alt: screenshot confirming correct product is added to the cart
-    caption: Client and server side validation confirming correct product is added to the cart
-  - image: ./images/ship-cart-ui.jpg
-    alt: screenshot showing shipping options
-    caption: Snipcart displaying custom shipping rate calculations
+sections: [
+  {
+    anchor: 'frontend',
+    header: 'Frontend',
+    items: [
+      {
+        header: 'React',
+        imageFileName: './images/react-cms.png',
+        imageAlt: 'react logo with an illustration of a content management system user interface',
+        description: 'I built a custom React CMS for editing product data. Some features include:  undo history, rich-text editing with Draft.js, form management with Formik, validations with Yup, and theme switching with styled-components.',
+      },
+      {
+        header: 'SASS',
+        imageFileName: './images/sass.png',
+        imageAlt:
+          'SASS logo with an illustration of a maniquin with three arms different colored arms',
+        description:
+          'I used SASS to construct modular CSS components with the BEM methodology and a sprinkle of atomic styles.',
+      },
+      {
+        header: 'JS',
+        imageFileName: './images/js.png',
+        imageAlt: 'webpack, es6, and babel logos',
+        description:
+          'All assets are bundled with Webpack including client-side ES6 to ES5 with polyfills for important features like Promises.',
+      },
+      {
+        imageFileName: './images/react-cms-ui-close.jpg',
+        imageAlt: 'react content managment system user interface',
+      },
+    ],
+  },
+  {
+    anchor: 'backend',
+    header: 'Backend',
+    items: [
+      {
+        header: 'MongoDB',
+        imageFileName: './images/mongodb.png',
+        imageAlt: 'mongodb name with and illustration of network lines with leaves growing on it',
+        description: 'I deployed over 900 products, each with their own set of images, pdf documents and relations to each other. Some products belonged to a single record, as in the case of variant products, and some belonged to many, as in the case of accessories and replacement parts.',
+      },
+      {
+        header: 'Express',
+        imageFileName: './images/express.png',
+        imageAlt: 'express.js name with an illustration of network lines coming out of a node',
+        description: 'Express routes all browser and API requests. This includes RESTful endpoints and integrations with third-party services.',
+      },
+      {
+        header: 'Pug',
+        imageFileName: './images/pug.png',
+        imageAlt: 'a pug riding the nimbus cloud',
+        description: 'Server render public html documents with pug',
+      },
+      {
+        header: 'Deploy',
+        imageFileName: './images/deploy.png',
+        imageAlt: 'a pug with plants inside a spaceship being blast off into space',
+        description: 'Deployed to a secure Nginx server on DigitalOcean',
+      },
+    ],
+  },
+  {
+    anchor: 'third-party-integrations',
+    header: 'Third Party Integrations',
+    subheader: 'APIs, APIs, APIs',
+    items: [
+      {
+        header: 'Snipcart',
+        imageFileName: './images/snipcart-integration.png',
+        imageAlt: 'diagram of node application connecting with snipcart and local database',
+        description: "I create a custom cart flows through their public API. I used their REST API to update Magma Products' internal inventory systems.",
+      },
+      {
+        header: 'Shipping Rates',
+        imageFileName: './images/shipping-integration.png',
+        imageAlt: 'diagram of node application connecting with shipping carriers and snipcart',
+        description:
+          "Generate custom shipping rate calculations enabled by Snipcart's shipping Webhook. Requested data from FedEx (XML SOAP API), UPS(JSON API), and USPS(XML API) to generate custom shipping rates.",
+      },
+      {
+        header: 'Shipworks',
+        imageFileName: './images/shipworks-integration.png',
+        imageAlt: 'diagram of node application connecting with Shipworks and Snipcart',
+        description:
+          'I built a custom integration between Snipcart and Shipworks to manage the shipment of online orders.',
+      },
+      {
+        imageFileName: './images/ship-cart-ui-close.jpg',
+        imageAlt: 'shoping cart user interface',
+      },
+    ],
+  },
+  {
+    anchor: 'screenshots',
+    header: 'Screenshots',
+    view: 'gallery',
+    items: [
+      {
+        imageFileName: './images/react-cms-ui-1.jpg',
+        imageAlt:
+          'screenshot of magma products content management system user interface product search',
+        caption: 'CMS with React',
+      },
+      {
+        imageFileName: './images/react-cms-ui-2.jpg',
+        imageAlt:
+          'screenshot of magma products content management system user interface showing product edit form',
+        caption: 'CMS with React',
+      },
+      {
+        imageFileName: './images/nav-ui.jpg',
+        imageAlt:
+          'screenshot of magma products navigation on public site for desktop and mobile screens',
+        caption: 'Responsive layouts',
+      },
+      {
+        imageFileName: './images/cookware-category.jpg',
+        imageAlt: 'screenshot of magma cookware category page',
+        caption: 'Product category page',
+      },
+      {
+        imageFileName: './images/mounts.jpg',
+        imageAlt: 'screenshot of magma mounts page',
+        caption: 'Product has many products',
+      },
+      {
+        imageFileName: './images/server-valid.jpg',
+        imageAlt: 'screenshot confirming correct product is added to the cart',
+        caption:
+          'Client and server side validation confirming correct product is added to the cart',
+      },
+      {
+        imageFileName: './images/ship-cart-ui.jpg',
+        imageAlt: 'screenshot showing shipping options',
+        caption: 'Snipcart displaying custom shipping rate calculations',
+      },
+    ],
+  },
+]
 ---
-
-import Section from '../../../src/components/section.js';
-
-<Section id="frontend" stripped rounded>
-
-## Frontend
-
-<div className="grid">
-<div className="grid-item">
-
-![react logo with with an illustration of a content management system user interface](images/react-cms.png)
-
-### React
-
-I built a custom React CMS for editing product data. You can find a [simplified demo in my codesandbox](https://codesandbox.io/s/github/lunajuan/cms-react-demo). Some features include:  undo history, rich-text editing with **Draft.js**, form management with **Formik**, validations with **Yup**, and theme switching with **styled-components**.
-
-</div>
-
-<div className="grid-item">
-
-![SASS logo with an illustration of a maniquin with three arms different colored arms](images/sass.png)
-
-### SASS
-I used SASS to construct modular CSS components with the **BEM** methodology and a sprinkle of *atomic* styles.
-
-</div>
-
-<div className="grid-item">
-
-![webpack, es6, and babel logos](images/js.png)
-
-### JS
-All assets are bundled with Webpack including client-side **ES6** to ES5 with polyfills for important features like Promises.
-
-</div>
-
-<div className="grid-item grid-item--screenshot">
-
-![react content managment system user interface](images/react-cms-ui-close.jpg)
-
-</div>
-</div>
-
-</Section>
-
-<Section id="backend" stripped>
-
-## Backend
-
-<div className="grid">
-<div className="grid-item">
-
-![mongodb name with and illustration of network lines with leaves growing on it](images/mongodb.png)
-
-### MonogoDB
-
-I deployed over 900 products, each with their own set of images, pdf documents and relations to each other. Some products belonged to a single record, as in the case of variant products, and some belonged to many, as in the case of accessories and replacement parts.
-
-</div>
-
-<div className="grid-item">
-
-![express.js name with an illustration of network lines coming out of a node](images/express.png)
-
-### Express
-
-Express routes all browser and API requests. This includes RESTful endpoints and integrations with third-party services.
-
-</div>
-
-<div className="grid-item">
-
-![a pug riding the nimbus cloud](images/pug.png)
-
-### Pug
-
-Server render public html documents with **pug**
-
-</div>
-
-<div className="grid-item">
-
-![a pug with plants inside a spaceship being blast off into space](images/deploy.png)
-
-### Deploy
-Deployed to a secure Nginx server on **DigitalOcean**
-
-</div>
-</div>
-
-</Section>
-
-<Section id="third-party" stripped>
-
-<div className="reverse-order">
-
-## Third Party Integrations
-
-  <h3 className="subtitle">APIs, APIs, APIs</h3>
-</div>
-
-<div className="grid">
-<div className="grid-item">
-
-![diagram of node application connecting with snipcart and local database](images/snipcart-integration.png)
-
-### Snipcart
-
-I create a custom cart flows through their public API. I used their REST API to update Magma Products' internal inventory systems.
-
-</div>
-
-<div className="grid-item">
-
-![diagram of node application connecting with shipping carriers and snipcart](images/shipping-integration.png)
-
-### Shipping Rates
-
-Generate custom shipping rate calculations enabled by Snipcart's shipping **Webhook**. Requested data from FedEx (*XML SOAP API*), UPS(*JSON API*), and USPS(*XML API*) to generate custom shipping rates.
-
-</div>
-
-<div className="grid-item">
-
-![diagram of node application connecting with Shipworks and Snipcart](images/shipworks-integration.png)
-
-### Shipworks
-
-I built a custom integration between Snipcart and Shipworks to manage the shipment of online orders.
-
-</div>
-
-<div className="grid-item grid-item--screenshot">
-
-![shoping cart user interface](images/ship-cart-ui-close.jpg)
-
-</div>
-
-</div>
-
-</Section>
