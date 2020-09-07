@@ -81,6 +81,8 @@ const GlobalStyles = createGlobalStyle`
   a {
     color: ${theme.text.primary};
     text-decoration: none;
+
+    /* TODO: improve outline brand */
   }
 
   p a, li a {
