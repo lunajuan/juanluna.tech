@@ -161,10 +161,7 @@ const CaseStudyTemplate = ({ data: { mdx } }) => {
           <Section key={header} stripped rounded={index % 2 !== 0} id={anchor}>
             <h2>{header}</h2>
             {view === 'gallery' ? (
-              <Section id="screenshots">
-                <h2>Screenshots</h2>
-                {items && <Gallery items={items} />}
-              </Section>
+              <Section id="screenshots">{items && <Gallery items={items} />}</Section>
             ) : (
               <SectionItems items={items} />
             )}
