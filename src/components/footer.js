@@ -1,5 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { IconContext } from 'react-icons';
+import { FaTwitter, FaInstagram, FaGithub } from 'react-icons/fa';
 import useSiteMetadata from '../hooks/useSiteMetadata';
 
 const FooterWrapper = styled.footer`
@@ -11,8 +14,26 @@ const FooterWrapper = styled.footer`
 `;
 
 const FooterLink = styled.a`
+  display: inline-flex;
+  align-items: center;
   margin-left: ${props => props.theme.spacing['8']};
+
+  .footer-icon {
+    margin-right: ${props => props.theme.spacing['2']};
+  }
 `;
+
+const FooterIcon = ({ icon }) => {
+  return (
+    <IconContext.Provider value={{ className: 'footer-icon', size: '1.2em' }}>
+      {icon}
+    </IconContext.Provider>
+  );
+};
+
+FooterIcon.propTypes = {
+  icon: PropTypes.node.isRequired,
+};
 
 const Footer = () => {
   const { github, twitter, instagram } = useSiteMetadata();
@@ -21,13 +42,13 @@ const Footer = () => {
     <FooterWrapper>
       <div>
         <FooterLink href={github} target="_blank" rel="noopener noreferrer">
-          Github
+          <FooterIcon icon={<FaGithub />} /> Github
         </FooterLink>
         <FooterLink href={instagram} target="_blank" rel="noopener noreferrer">
-          Instagram
+          <FooterIcon icon={<FaInstagram />} /> Instagram
         </FooterLink>
         <FooterLink href={twitter} target="_blank" rel="noopener noreferrer">
-          Twitter
+          <FooterIcon icon={<FaTwitter />} /> Twitter
         </FooterLink>
       </div>
     </FooterWrapper>
