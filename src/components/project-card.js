@@ -5,15 +5,6 @@ import { Link } from 'gatsby';
 import techMap from '../../config/techMap';
 import Img from './image';
 
-const ImgLink = ({ children, gatsbyLink = false, to }) => {
-  if (gatsbyLink) return <Link to={to}>{children}</Link>;
-  return (
-    <a href={to} target="_blank" rel="noopener noreferrer">
-      {children}
-    </a>
-  );
-};
-
 const TechIconStyles = styled.ul`
   display: flex;
   font-size: ${props => props.theme.fontSize.sm};
@@ -52,22 +43,18 @@ TechIcons.propTypes = {
 };
 
 const ProjectCard = ({ project }) => {
-  const imageHref = project.slug || project.github || project.codesandbox || project.url;
-
   return (
     <div>
       {project.imageFileName && (
-        <ImgLink to={project.slug ? `/${project.slug}` : imageHref} gatsbyLink={project.slug}>
-          <Img
-            rounded
-            shadow
-            fluid={{
-              ...project.imageFileName.childImageSharp.fluid,
-              sizes: `(min-width: 1500px) 400px, (min-width: 1421px) 33vw, (min-width: 831px) 50vw, 100vw`,
-            }}
-            alt={project.imageAlt}
-          />
-        </ImgLink>
+        <Img
+          rounded
+          shadow
+          fluid={{
+            ...project.imageFileName.childImageSharp.fluid,
+            sizes: `(min-width: 1500px) 400px, (min-width: 1421px) 33vw, (min-width: 831px) 50vw, 100vw`,
+          }}
+          alt={project.imageAlt}
+        />
       )}
       <h3>{project.header}</h3>
       {project.tech && <TechIcons techNames={project.tech} />}
