@@ -25,7 +25,7 @@ const TechIcons = ({ techNames }) => {
     .map(techName => {
       const { icon: Icon, label } = techMap[techName];
       return (
-        <li>
+        <li key={techName}>
           <Icon size="2.2em" /> {label}
         </li>
       );
@@ -42,46 +42,56 @@ TechIcons.propTypes = {
   techNames: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({
+  header,
+  description,
+  slug,
+  url,
+  github,
+  codesandbox,
+  previewImage,
+  previewImageAlt,
+  techUsed,
+}) => {
   return (
     <div>
-      {project.imageFileName && (
+      {previewImage && (
         <Img
           rounded
           shadow
           fluid={{
-            ...project.imageFileName.childImageSharp.fluid,
+            ...previewImage.childImageSharp.fluid,
             sizes: `(min-width: 1500px) 400px, (min-width: 1421px) 33vw, (min-width: 831px) 50vw, 100vw`,
           }}
-          alt={project.imageAlt}
+          alt={previewImageAlt}
         />
       )}
-      <h3>{project.header}</h3>
-      {project.tech && <TechIcons techNames={project.tech} />}
-      <p>{project.description}</p>
+      <h3>{header}</h3>
+      {techUsed.length && <TechIcons techNames={techUsed} />}
+      <p>{description}</p>
       <ul>
-        {project.slug && (
+        {slug && (
           <li>
-            <Link to={`/${project.slug}`}>Case Study</Link>
+            <Link to={`/${slug}`}>Case Study</Link>
           </li>
         )}
-        {project.url && (
+        {url && (
           <li>
-            <a href={project.url} target="_blank" rel="noopener noreferrer">
-              {project.url.replace(/https?:\/\//, '')}
+            <a href={url} target="_blank" rel="noopener noreferrer">
+              {url.replace(/https?:\/\//, '')}
             </a>
           </li>
         )}
-        {project.github && (
+        {github && (
           <li>
-            <a href={project.github} target="_blank" rel="noopener noreferrer">
+            <a href={github} target="_blank" rel="noopener noreferrer">
               github
             </a>
           </li>
         )}
-        {project.codesandbox && (
+        {codesandbox && (
           <li>
-            <a href={project.codesandbox} target="_blank" rel="noopener noreferrer">
+            <a href={codesandbox} target="_blank" rel="noopener noreferrer">
               codesandbox
             </a>
           </li>
@@ -89,6 +99,33 @@ const ProjectCard = ({ project }) => {
       </ul>
     </div>
   );
+};
+
+ProjectCard.propTypes = {
+  header: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  slug: PropTypes.string,
+  url: PropTypes.string,
+  github: PropTypes.string,
+  codesandbox: PropTypes.string,
+  previewImage: PropTypes.shape({
+    childImageSharp: PropTypes.shape({
+      fluid: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+    }),
+  }),
+  previewImageAlt: PropTypes.string,
+  techUsed: PropTypes.arrayOf(PropTypes.string),
+};
+
+ProjectCard.defaultProps = {
+  description: PropTypes.string,
+  slug: PropTypes.string,
+  url: PropTypes.string,
+  github: PropTypes.string,
+  codesandbox: PropTypes.string,
+  previewImage: null,
+  previewImageAlt: PropTypes.string,
+  techUsed: [],
 };
 
 export default ProjectCard;

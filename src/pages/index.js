@@ -58,9 +58,35 @@ export default ({ data: { profileImage } }) => {
       <Section id="projects">
         <h2>Projects</h2>
         <Grid>
-          {projects.map(project => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+          {projects.map(
+            ({
+              id,
+              header,
+              description,
+              slug,
+              url,
+              github,
+              codesandbox,
+              imageFileName,
+              imageAlt,
+              tech,
+            }) => {
+              return (
+                <ProjectCard
+                  key={id}
+                  header={header}
+                  description={description}
+                  slug={slug}
+                  url={url}
+                  github={github}
+                  codesandbox={codesandbox}
+                  previewImage={imageFileName}
+                  previewImageAlt={imageAlt}
+                  techUsed={tech}
+                />
+              );
+            }
+          )}
         </Grid>
       </Section>
     </Layout>
