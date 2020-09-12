@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import Img from '../components/image';
@@ -34,7 +35,7 @@ const ProfileImage = styled(Img)`
   }
 `;
 
-export default ({ data: { profileImage } }) => {
+const Home = ({ data: { profileImage } }) => {
   const projects = useProjects();
 
   return (
@@ -92,6 +93,18 @@ export default ({ data: { profileImage } }) => {
     </Layout>
   );
 };
+
+Home.propTypes = {
+  data: PropTypes.shape({
+    profileImage: PropTypes.shape({
+      childImageSharp: PropTypes.shape({
+        fluid: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+      }),
+    }),
+  }).isRequired,
+};
+
+export default Home;
 
 export const query = graphql`
   query {
