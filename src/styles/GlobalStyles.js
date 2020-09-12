@@ -85,7 +85,11 @@ const GlobalStyles = createGlobalStyle`
     /* TODO: improve outline brand */
   }
 
-  p a, li a {
+  nav a, footer a {
+    color: ${theme.green};
+  }
+
+  p a, li a{
     position: relative;
 
     &:before {
