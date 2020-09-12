@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import Img from '../components/image';
@@ -34,7 +35,7 @@ const ProfileImage = styled(Img)`
   }
 `;
 
-export default ({ data: { profileImage } }) => {
+const Home = ({ data: { profileImage } }) => {
   const projects = useProjects();
 
   return (
@@ -58,14 +59,52 @@ export default ({ data: { profileImage } }) => {
       <Section id="projects">
         <h2>Projects</h2>
         <Grid>
-          {projects.map(project => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+          {projects.map(
+            ({
+              id,
+              header,
+              description,
+              slug,
+              url,
+              github,
+              codesandbox,
+              imageFileName,
+              imageAlt,
+              tech,
+            }) => {
+              return (
+                <ProjectCard
+                  key={id}
+                  header={header}
+                  description={description}
+                  slug={slug}
+                  url={url}
+                  github={github}
+                  codesandbox={codesandbox}
+                  previewImage={imageFileName}
+                  previewImageAlt={imageAlt}
+                  techUsed={tech}
+                />
+              );
+            }
+          )}
         </Grid>
       </Section>
     </Layout>
   );
 };
+
+Home.propTypes = {
+  data: PropTypes.shape({
+    profileImage: PropTypes.shape({
+      childImageSharp: PropTypes.shape({
+        fluid: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+      }),
+    }),
+  }).isRequired,
+};
+
+export default Home;
 
 export const query = graphql`
   query {
