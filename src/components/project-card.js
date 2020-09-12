@@ -69,7 +69,7 @@ const ProjectCard = ({ project }) => {
           />
         </ImgLink>
       )}
-      <h3>{project.title}</h3>
+      <h3>{project.header}</h3>
       {project.tech && <TechIcons techNames={project.tech} />}
       <p>{project.description}</p>
       <ul>

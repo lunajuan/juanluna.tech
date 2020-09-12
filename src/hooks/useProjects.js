@@ -7,7 +7,7 @@ const useProjects = () => {
         nodes {
           id
           frontmatter {
-            title
+            header
             description
             slug
             url
@@ -32,7 +32,7 @@ const useProjects = () => {
     const {
       id,
       frontmatter: {
-        title,
+        header,
         description,
         slug,
         url,
@@ -46,7 +46,7 @@ const useProjects = () => {
 
     return {
       id,
-      title,
+      header,
       description,
       slug,
       url,
