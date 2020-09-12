@@ -21,6 +21,7 @@ const useProjects = () => {
               }
             }
             imageAlt
+            tech
           }
         }
       }
@@ -30,10 +31,31 @@ const useProjects = () => {
   return data.allMdx.nodes.map(project => {
     const {
       id,
-      frontmatter: { title, description, slug, url, github, codesandbox, imageFileName, imageAlt },
+      frontmatter: {
+        title,
+        description,
+        slug,
+        url,
+        github,
+        codesandbox,
+        imageFileName,
+        imageAlt,
+        tech,
+      },
     } = project;
 
-    return { id, title, description, slug, url, github, codesandbox, imageFileName, imageAlt };
+    return {
+      id,
+      title,
+      description,
+      slug,
+      url,
+      github,
+      codesandbox,
+      imageFileName,
+      imageAlt,
+      tech,
+    };
   });
 };
 
