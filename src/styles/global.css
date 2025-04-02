@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+a {
+  @apply text-blue-500 underline;
+}
+
+* {
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:rounded-md;
+}

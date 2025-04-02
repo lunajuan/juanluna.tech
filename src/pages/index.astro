@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/Layout.astro"
+import ProfileImage from "../assets/juan-profile.jpg"
+import { Image } from "astro:assets"
+import GithubLogo from "../assets/icons/GithubLogo.astro"
+import LinkedinLogo from "../assets/icons/LinkedinLogo.astro"
+
+const socialLinks = [
+  {
+    name: "GitHub",
+    url: "https://github.com/lunajuan",
+    Icon: GithubLogo,
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/juanlunaramirez",
+    Icon: LinkedinLogo,
+  },
+]
+---
+
+<Layout>
+  <div class="w-full h-full flex flex-col items-center justify-center">
+    <div class="max-w-prose mx-auto flex flex-col items-center gap-4 p-4">
+      <div>
+        <Image
+          src={ProfileImage}
+          alt="Juan Luna Ramirez's profile picture"
+          class="w-full max-w-52 rounded-full mb-2"
+        />
+        <h1 class="text-2xl font-bold">Juan Luna Ramirez</h1>
+      </div>
+      <p>
+        I'm a full-stack developer in focused on building high-performance
+        applications & solving complex problems. You can find more about me at
+        the following places.
+        <div class="flex gap-8">
+          {
+            socialLinks.map(({ name, url, Icon }) => (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 p-2"
+              >
+                {Icon && <Icon className="w-6 h-6" />}
+                {name}
+              </a>
+            ))
+          }
+        </div>
+      </p>
+    </div>
+  </div>
+</Layout>
