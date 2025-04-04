@@ -1,0 +1,46 @@
+---
+import "../styles/global.css"
+const title = "Juan Luna Ramirez | Software Engineer"
+const description =
+  "I'm a full-stack developer in focused on building high-performance applications & solving complex problems."
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/juanluna-meta.png" />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:title" content={title} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<script>
+  import { DARK_MODE_LOCAL_STORAGE_KEY, COLOR_SCHEME_QUERY } from "../constants"
+  // Set initial dark mode state before React hydration
+  const darkModeValue = localStorage.getItem(DARK_MODE_LOCAL_STORAGE_KEY)
+  if (darkModeValue !== null) {
+    document.documentElement.classList.toggle("dark", darkModeValue === "true")
+  } else {
+    // If no localStorage value, use system preference
+    const isDarkModeOS = window.matchMedia(COLOR_SCHEME_QUERY).matches
+    document.documentElement.classList.toggle("dark", isDarkModeOS)
+  }
+</script>
