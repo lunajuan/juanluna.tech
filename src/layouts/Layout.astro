@@ -24,3 +24,16 @@ import "../styles/global.css"
     height: 100%;
   }
 </style>
+
+<script>
+  import { DARK_MODE_LOCAL_STORAGE_KEY, COLOR_SCHEME_QUERY } from "../constants"
+  // Set initial dark mode state before React hydration
+  const darkModeValue = localStorage.getItem(DARK_MODE_LOCAL_STORAGE_KEY)
+  if (darkModeValue !== null) {
+    document.documentElement.classList.toggle('dark', darkModeValue === 'true')
+  } else {
+    // If no localStorage value, use system preference
+    const isDarkModeOS = window.matchMedia(COLOR_SCHEME_QUERY).matches
+    document.documentElement.classList.toggle('dark', isDarkModeOS)
+  }
+</script>
