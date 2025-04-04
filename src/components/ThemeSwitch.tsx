@@ -2,6 +2,8 @@ import { useLocalStorage, useMediaQuery } from "usehooks-ts"
 import { type HTMLDivProps } from "../types/html.types"
 import { DARK_MODE_LOCAL_STORAGE_KEY, COLOR_SCHEME_QUERY } from "../constants"
 import { useEffect } from "react"
+import SunDimIcon from "../assets/icons/SunDimIcon"
+import MoonIcon from "../assets/icons/MoonIcon"
 
 type Props = HTMLDivProps
 export default function ThemeSwitch({ ...props }: Props) {
@@ -11,9 +13,18 @@ export default function ThemeSwitch({ ...props }: Props) {
     document.documentElement.classList.toggle("dark", isDarkMode)
   }, [isDarkMode])
 
+  const Icon = isDarkMode ? SunDimIcon : MoonIcon
+  const text = isDarkMode ? "light mode" : "dark mode"
+
   return (
     <div {...props}>
-      <button onClick={toggle} className="block p-4">{isDarkMode ? "Light" : "Dark"}</button>
+      <button
+        onClick={toggle}
+        className="flex p-4 items-center gap-2 justify-center text-neutral-600 dark:text-neutral-400"
+      >
+        <Icon className="w-6 h-6" />
+        <span>{text}</span>
+      </button>
     </div>
   )
 }
