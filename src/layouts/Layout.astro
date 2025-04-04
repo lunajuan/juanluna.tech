@@ -1,5 +1,8 @@
 ---
 import "../styles/global.css"
+const title = "Juan Luna Ramirez | Software Engineer"
+const description =
+  "I'm a full-stack developer in focused on building high-performance applications & solving complex problems."
 ---
 
 <!doctype html>
@@ -7,9 +10,13 @@ import "../styles/global.css"
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/juanluna-meta.png" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <meta property="og:title" content={title} />
+    <title>{title}</title>
   </head>
   <body>
     <slot />
@@ -30,10 +37,10 @@ import "../styles/global.css"
   // Set initial dark mode state before React hydration
   const darkModeValue = localStorage.getItem(DARK_MODE_LOCAL_STORAGE_KEY)
   if (darkModeValue !== null) {
-    document.documentElement.classList.toggle('dark', darkModeValue === 'true')
+    document.documentElement.classList.toggle("dark", darkModeValue === "true")
   } else {
     // If no localStorage value, use system preference
     const isDarkModeOS = window.matchMedia(COLOR_SCHEME_QUERY).matches
-    document.documentElement.classList.toggle('dark', isDarkModeOS)
+    document.documentElement.classList.toggle("dark", isDarkModeOS)
   }
 </script>
